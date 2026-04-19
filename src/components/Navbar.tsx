@@ -92,7 +92,7 @@ export default function Navbar() {
                 >
                   {link.name}
                   <motion.span 
-                    className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#b8eae4] transition-all group-hover:w-full"
+                    className="absolute -bottom-1 left-0 w-0 h-px bg-[#b8eae4] transition-all group-hover:w-full"
                     layoutId="navbar-underline"
                   />
                 </Link>

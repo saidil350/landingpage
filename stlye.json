@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "name": "Sonaura Energy Design System",
+    "version": "1.0.0",
+    "description": "Design tokens untuk replikasi style sonauraenergy.com",
+    "created": "2026-04-20"
+  },
+  "colors": {
+    "brand": {
+      "heroTeal": {
+        "value": "#2a7f8f",
+        "usage": "Hero section background overlay",
+        "group": "brand"
+      },
+      "darkForest": {
+        "value": "#1a3a36",
+        "usage": "Dark section BG, navbar, dark cards",
+        "group": "brand"
+      },
+      "mintAccent": {
+        "value": "#b8eae4",
+        "usage": "Mint highlight block (section 3 kiri)",
+        "group": "brand"
+      },
+      "midForest": {
+        "value": "#2a5c4a",
+        "usage": "Photo placeholder, mid-dark elements",
+        "group": "brand"
+      }
+    },
+    "backgrounds": {
+      "offWhite": {
+        "value": "#f4f3ef",
+        "usage": "Section 2 background, general page bg",
+        "group": "bg"
+      },
+      "white": {
+        "value": "#ffffff",
+        "usage": "Card surfaces, content areas",
+        "group": "bg"
+      },
+      "darkSection": {
+        "value": "#1a3a36",
+        "usage": "Dark mosaic section background",
+        "group": "bg"
+      },
+      "darkSectionAlt": {
+        "value": "#1f4540",
+        "usage": "Alternating dark grid cell",
+        "group": "bg"
+      },
+      "mintSection": {
+        "value": "#b8eae4",
+        "usage": "Mint left block section 3",
+        "group": "bg"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "#1a2e2a",
+        "usage": "Heading utama, teks gelap",
+        "group": "text"
+      },
+      "secondary": {
+        "value": "#3a5a50",
+        "usage": "Body paragraph, deskripsi",
+        "group": "text"
+      },
+      "muted": {
+        "value": "#6a8a80",
+        "usage": "Hint text, label kecil",
+        "group": "text"
+      },
+      "onDark": {
+        "value": "#ffffff",
+        "usage": "Teks di atas dark background",
+        "group": "text"
+      },
+      "onDarkMuted": {
+        "value": "rgba(255,255,255,0.55)",
+        "usage": "Subtext di atas dark BG",
+        "group": "text"
+      },
+      "onMint": {
+        "value": "#1a2e2a",
+        "usage": "Teks di atas mint background",
+        "group": "text"
+      },
+      "stepNumber": {
+        "value": "rgba(255,255,255,0.28)",
+        "usage": "Angka 01. 02. 03. pada mosaic",
+        "group": "text"
+      }
+    },
+    "borders": {
+      "light": {
+        "value": "rgba(26,46,42,0.12)",
+        "usage": "Border default elemen terang",
+        "group": "border"
+      },
+      "medium": {
+        "value": "rgba(26,46,42,0.25)",
+        "usage": "Border hover/emphasis",
+        "group": "border"
+      },
+      "onDark": {
+        "value": "rgba(255,255,255,0.12)",
+        "usage": "Border di dark section",
+        "group": "border"
+      },
+      "buttonGhost": {
+        "value": "#1a2e2a",
+        "usage": "Border ghost button light mode",
+        "group": "border"
+      },
+      "buttonGhostDark": {
+        "value": "rgba(255,255,255,0.5)",
+        "usage": "Border ghost button dark mode",
+        "group": "border"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "primary": "DM Sans",
+      "fallback": "system-ui, -apple-system, sans-serif",
+      "googleFontsUrl": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap"
+    },
+    "fontWeights": {
+      "light": 300,
+      "regular": 400,
+      "medium": 500,
+      "note": "JANGAN pakai 600 atau 700 — terlalu berat untuk style ini"
+    },
+    "scale": {
+      "heroHeading": {
+        "size": "clamp(40px, 5.5vw, 72px)",
+        "weight": 300,
+        "lineHeight": 1.15,
+        "usage": "H1 hero fullscreen"
+      },
+      "sectionHeading": {
+        "size": "clamp(28px, 3.5vw, 44px)",
+        "weight": 300,
+        "lineHeight": 1.2,
+        "usage": "H2 tiap section"
+      },
+      "cardTitle": {
+        "size": "18px",
+        "weight": 400,
+        "lineHeight": 1.3,
+        "usage": "Judul card/step"
+      },
+      "body": {
+        "size": "15px",
+        "weight": 400,
+        "lineHeight": 1.75,
+        "usage": "Paragraf konten"
+      },
+      "bodySmall": {
+        "size": "13px",
+        "weight": 400,
+        "lineHeight": 1.65,
+        "usage": "Caption, deskripsi pendek"
+      },
+      "label": {
+        "size": "11px",
+        "weight": 500,
+        "letterSpacing": "0.1em",
+        "textTransform": "uppercase",
+        "usage": "Label kecil, badge, tag"
+      },
+      "stepNumber": {
+        "size": "clamp(18px, 2vw, 28px)",
+        "weight": 300,
+        "usage": "Angka 01. 02. 03. pada mosaic"
+      },
+      "navLink": {
+        "size": "13px",
+        "weight": 400,
+        "usage": "Link navigasi navbar"
+      }
+    }
+  },
+  "spacing": {
+    "sectionPaddingV": {
+      "value": "clamp(60px, 8vw, 120px)",
+      "usage": "Padding atas-bawah tiap section"
+    },
+    "sectionPaddingH": {
+      "value": "clamp(24px, 8%, 140px)",
+      "usage": "Padding kiri-kanan tiap section"
+    },
+    "columnGap": {
+      "value": "clamp(40px, 5vw, 80px)",
+      "usage": "Gap antar kolom dua-kolom"
+    },
+    "paragraphGap": {
+      "value": "16px",
+      "usage": "Jarak antar paragraf"
+    },
+    "elementGap": {
+      "value": "12px",
+      "usage": "Jarak antar elemen dalam card"
+    },
+    "mosaicGutter": {
+      "value": "2px",
+      "usage": "Gap grid mosaic section 3"
+    },
+    "maxWidth": {
+      "value": "none",
+      "usage": "Full bleed — tidak ada max-width container"
+    },
+    "navHeight": {
+      "value": "68px",
+      "usage": "Tinggi navbar"
+    }
+  },
+  "components": {
+    "navbar": {
+      "background": {
+        "default": "transparent",
+        "scrolled": "#1a3a36"
+      },
+      "position": "fixed",
+      "height": "68px",
+      "padding": "0 clamp(24px, 6%, 80px)",
+      "logoFontSize": "15px",
+      "logoFontWeight": 500,
+      "linkColor": {
+        "default": "rgba(255,255,255,0.7)",
+        "hover": "#ffffff"
+      },
+      "transition": "background 0.3s ease"
+    },
+    "buttonGhost": {
+      "padding": "10px 24px",
+      "border": "1px solid currentColor",
+      "borderRadius": "0px",
+      "background": "transparent",
+      "fontSize": "13px",
+      "fontWeight": 400,
+      "display": "inline-flex",
+      "alignItems": "center",
+      "gap": "10px",
+      "note": "NO border-radius — sharp corners adalah ciri khas"
+    },
+    "buttonGhostIcon": {
+      "size": "20px",
+      "borderRadius": "50%",
+      "border": "1px solid currentColor",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "content": "▶",
+      "fontSize": "9px"
+    },
+    "textLink": {
+      "color": "#1a2e2a",
+      "textDecoration": "none",
+      "borderBottom": "1px solid currentColor",
+      "paddingBottom": "1px",
+      "suffix": " →",
+      "fontSize": "14px"
+    },
+    "photo": {
+      "borderRadius": "0px",
+      "objectFit": "cover",
+      "note": "Selalu sharp corner, tidak pernah rounded"
+    }
+  },
+  "sections": {
+    "hero": {
+      "height": "100vh",
+      "minHeight": "600px",
+      "layout": "flex center center",
+      "backgroundType": "photo dengan overlay",
+      "overlayColor": "rgba(15,40,35,0.32)",
+      "textAlign": "center",
+      "maxTextWidth": "700px",
+      "elements": [
+        "heading H1",
+        "ghost button dengan icon circle"
+      ]
+    },
+    "twoColumn": {
+      "background": "#f4f3ef",
+      "layout": "grid 1fr 1fr",
+      "columnGap": "clamp(40px, 5vw, 80px)",
+      "padding": "clamp(60px, 8vw, 120px) clamp(24px, 8%, 140px)",
+      "photoSide": "right",
+      "photoAspectRatio": "4/3",
+      "elements": [
+        "H2 heading",
+        "2x paragraf body",
+        "text link →"
+      ]
+    },
+    "mosaicGrid": {
+      "layout": "grid 1fr 1.2fr",
+      "leftBlock": {
+        "background": "#b8eae4",
+        "padding": "clamp(48px, 6vw, 80px) clamp(32px, 4vw, 60px)",
+        "elements": [
+          "H2 heading",
+          "body text",
+          "text link →"
+        ]
+      },
+      "rightGrid": {
+        "background": "#1a3a36",
+        "layout": "grid 2 kolom x N baris",
+        "gutter": "2px",
+        "cellTypes": [
+          "foto",
+          "teks-step"
+        ],
+        "stepFormat": "01. / 02. / 03.",
+        "stepNumberColor": "rgba(255,255,255,0.28)",
+        "stepTitleWeight": 500
+      }
+    }
+  }
+}

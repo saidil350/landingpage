@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdanta | Setting the standard for green industrial power</title>
+    
+    <!-- Google Fonts: DM Sans (300, 400) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --hero-overlay: #2a7f8f;
+            --off-white: #f4f3ef;
+            --primary-text: #1a2e2a;
+            --mint-accent: #b8eae4;
+            --dark-bg: #1a3a36;
+            --white: #ffffff;
+            --dark-green-visual: #2a5c4a;
+            
+            --heading-size: clamp(40px, 8vw, 72px);
+            --subheading-size: clamp(32px, 5vw, 40px);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important; /* Strict design rule */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--off-white);
+            color: var(--primary-text);
+            line-height: 1.6;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--primary-text);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            padding: 120px 0;
+            overflow: hidden;
+        }
+
+        /* Utility: Sharp Image/Block */
+        .visual-block {
+            background-color: var(--dark-green-visual);
+            aspect-ratio: 4/3;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 1. NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 30px 0;
+            transition: background 0.4s ease, padding 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: var(--white);
+            padding: 20px 0;
+            box-shadow: none; /* No shadows rule */
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            color: var(--white);
+        }
+
+        nav.scrolled .logo {
+            color: var(--primary-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--primary-text);
+        }
+
+        /* 2. HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(26, 46, 42, 0.6), rgba(26, 46, 42, 0.6)), 
+                        linear-gradient(var(--hero-overlay), var(--hero-overlay)); /* Simulating photo with gradient */
+            background-size: cover;
+            background-position: center;
+            padding: 0;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: var(--heading-size);
+            max-width: 1000px;
+            margin-bottom: 40px;
+        }
+
+        .ghost-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: var(--white);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ghost-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 24px;
+            height: 24px;
+            border: 1px solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        /* 3. TWO-COLUMN SECTION */
+        .two-column {
+            background-color: var(--off-white);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .content-left h2 {
+            font-size: var(--subheading-size);
+            margin-bottom: 30px;
+        }
+
+        .content-left p {
+            margin-bottom: 25px;
+            color: rgba(26, 46, 42, 0.8);
+            max-width: 500px;
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--primary-text);
+            padding-bottom: 5px;
+        }
+
+        /* 4. MOSAIC GRID SECTION */
+        .mosaic-grid {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+        }
+
+        .mosaic-left {
+            background-color: var(--mint-accent);
+            padding: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mosaic-left h2 {
+            font-size: var(--subheading-size);
+            margin-bottom: 30px;
+            max-width: 450px;
+        }
+
+        .mosaic-left p {
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        .mosaic-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .step-block {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 40px;
+            opacity: 0.1;
+            font-weight: 300;
+        }
+
+        .step-block h3 {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 400; /* As requested: small description text, but title is bold in description, but rule says no bold. I will use 400. */
+            margin-bottom: 10px;
+        }
+
+        .step-block p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.5;
+        }
+
+        /* 5. STATS SECTION */
+        .stats {
+            background-color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px; /* Small gap to show off-white bg between cards */
+        }
+
+        .stat-card {
+            background-color: var(--off-white);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(26, 46, 42, 0.4);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--primary-text);
+        }
+
+        /* 6. FOOTER */
+        footer {
+            background-color: var(--primary-text);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .mosaic-grid {
+                grid-template-columns: 1fr;
+            }
+            .mosaic-left {
+                padding: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            nav .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .mosaic-right {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo">Verdanta</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1>Setting the standard for green industrial power.</h1>
+            <button class="ghost-button">
+                See how we work <span class="play-icon">▶</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- TWO-COLUMN SECTION -->
+    <section id="about" class="two-column">
+        <div class="container">
+            <div class="grid-2">
+                <div class="content-left">
+                    <h2>Locally generated renewable energy for industry</h2>
+                    <p>Kami hadir untuk mentransformasi cara industri mengonsumsi energi. Melalui pendekatan berbasis teknologi dan kemitraan strategis, Verdanta memastikan setiap watt yang Anda gunakan berasal dari sumber yang berkelanjutan dan efisien.</p>
+                    <p>Integrasi panel surya dan sistem penyimpanan energi kami dirancang untuk skalabilitas industri modern, memberikan ketahanan daya tanpa mengorbankan tanggung jawab lingkungan.</p>
+                    <a href="#" class="text-link">Learn more about who we are →</a>
+                </div>
+                <div class="content-right">
+                    <div class="visual-block"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOSAIC GRID SECTION -->
+    <section id="services" class="mosaic-grid">
+        <div class="mosaic-left">
+            <h2>A fully-managed path to clean, resilient power.</h2>
+            <p>Dari audit awal hingga pemantauan real-time, kami mengelola seluruh siklus hidup infrastruktur energi Anda.</p>
+            <a href="#" class="text-link">See what we deliver →</a>
+        </div>
+        <div class="mosaic-right">
+            <!-- Row 1: Photo | Text -->
+            <div class="visual-block"></div>
+            <div class="step-block">
+                <span class="step-number">01.</span>
+                <h3>Site Assessment & Viability</h3>
+                <p>Analisis mendalam terhadap lokasi untuk mengoptimalkan potensi energi terbarukan yang tersedia.</p>
+            </div>
+            <!-- Row 2: Text | Photo -->
+            <div class="step-block">
+                <span class="step-number">02.</span>
+                <h3>Commercial Structure</h3>
+                <p>Model pembiayaan dan struktur komersial yang fleksibel untuk keuntungan jangka panjang.</p>
+            </div>
+            <div class="visual-block"></div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="projects" class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Annual Output</span>
+                    <span class="stat-value">12 GWh</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Deployments</span>
+                    <span class="stat-value">8 Sites</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Investment</span>
+                    <span class="stat-value">£0 Upfront</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Partnership</span>
+                    <span class="stat-value">15yr Contracts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Verdanta</div>
+                <div class="footer-nav">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+                <div class="tagline">Leading the green industrial revolution.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Navbar Scroll Behavior
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

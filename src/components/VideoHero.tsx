@@ -114,7 +114,6 @@ const VideoHero = () => {
             muted
             loop
             playsInline
-            controls
             preload="metadata"
             poster="/hero_background.png"
             className="w-full h-full object-cover"

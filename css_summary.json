@@ -1,0 +1,188 @@
+{
+  "fonts": {
+    "primary": "source-sans-pro",
+    "weights": ["200", "300", "400", "500", "700", "800", "900"],
+    "styles": ["normal", "italic"],
+    "source": "Adobe TypeKit",
+    "description": "Font utama berasal dari TypeKit. Varian berat 200–900 dan italic ditentukan melalui @font-face dalam CSS." 
+  },
+  "variables": {
+    "--color-orange": "#ff5938",
+    "--color-green-100": "#185649",
+    "--color-dark-green": "#0f4338",
+    "--color-beige": "#eee8e2",
+    "--color-dark": "#1f1e1e",
+    "--color-light": "#fefefe",
+    "--color-grey-500": "#9f908d",
+    "--color-grey-600": "#8d8d8d",
+    "--spacing-unit": "8px",
+    "--header-height": {
+      "sm": "70px",
+      "md": "118px",
+      "lg": "124px"
+    },
+    "--block-spacing-md": {
+      "sm": "60px 0",
+      "md": "80px 0",
+      "lg": "120px 0"
+    },
+    "--transition-default": "0.3s ease-in-out",
+    "--hero-transition-time": "1000ms"
+  },
+  "layout": {
+    "gridSystem": {
+      "columns": 12,
+      "gap": "16px",
+      "classes": [".grid", ".col-auto", ".col-span-full", ".col-start-auto", ".col-end-auto"]
+    },
+    "paddingClasses": {
+      ".fluid-padding--sm": "padding: calc(15% - 10vw) 0",
+      ".fluid-padding--md": "padding: calc(17.5% - 10vw) 0",
+      ".fluid-padding--lg": "padding: calc(20% - 10vw) 0"
+    },
+    "responsiveSpacing": "Variabel block-spacing digunakan untuk mengatur jarak vertikal antar blok."
+  },
+  "header": {
+    "display": "flex",
+    "justify": "space-between",
+    "height": "variabel --header-height",
+    "variants": {
+      "header--light": "Menampilkan teks dan menu berwarna putih pada latar transparan."
+    }
+  },
+  "footer": {
+    "color": "var(--color-light)",
+    "lineHeight": "1.1",
+    "padding": {
+      "base": "16px 0 40px",
+      "sm": "40px 0",
+      "md": "80px 0 40px"
+    },
+    "layout": "Menu footer disusun sebagai flex container dengan gap 40px."
+  },
+  "components": {
+    "buttons": {
+      "description": "Kelas .c-button digunakan sebagai basis tombol dengan display flex dan border-radius sedang. Berbagai varian menentukan warna latar, teks, border serta perilaku hover.",
+      "variants": {
+        "primary": {
+          "classes": [".c-button", ".c-button--primary"],
+          "background": "var(--color-orange)",
+          "color": "var(--color-light)",
+          "hover": {
+            "background": "var(--color-dark)",
+            "overlay": "Pseudo-element :after menambah overlay gelap"
+          }
+        },
+        "secondary": {
+          "classes": [".c-button", ".c-button--secondary"],
+          "background": "var(--color-green-100)",
+          "color": "var(--color-light)",
+          "hover": {
+            "background": "var(--color-light)",
+            "color": "var(--color-dark)"
+          }
+        },
+        "secondaryDark": {
+          "classes": [".c-button", ".c-button--secondary-dark"],
+          "background": "var(--color-dark-green)"
+        },
+        "white": {
+          "background": "var(--color-light)",
+          "border": "1px solid var(--color-light)",
+          "color": "var(--color-dark)",
+          "hover": {
+            "background": "transparent",
+            "color": "var(--color-light)"
+          }
+        },
+        "whiteOrange": {
+          "background": "var(--color-light)",
+          "border": "1px solid var(--color-light)",
+          "color": "var(--color-dark)",
+          "hover": {
+            "background": "var(--color-orange)",
+            "borderColor": "var(--color-orange)",
+            "color": "var(--color-light)",
+            "transform": "scale(0.97)"
+          }
+        },
+        "whiteGrey": {
+          "background": "var(--color-light)",
+          "border": "1px solid var(--color-light)",
+          "color": "var(--color-dark)",
+          "hover": {
+            "background": "var(--color-grey-500)",
+            "borderColor": "var(--color-grey-500)",
+            "color": "var(--color-light)"
+          }
+        },
+        "borderWhite": {
+          "background": "transparent",
+          "border": "1px solid var(--color-light)",
+          "color": "var(--color-light)",
+          "hover": {
+            "background": "var(--color-light)",
+            "color": "var(--color-dark)",
+            "transform": "scale(0.97)"
+          }
+        },
+        "grey": {
+          "background": "var(--color-grey-500)",
+          "color": "var(--color-light)",
+          "hover": {
+            "background": "var(--color-light)",
+            "color": "var(--color-grey-500)"
+          }
+        },
+        "small": {
+          "background": "var(--color-beige)",
+          "borderRadius": "9px",
+          "padding": "11px 16px",
+          "color": "var(--color-dark)",
+          "hover": {
+            "background": "var(--color-light)",
+            "color": "var(--color-dark)"
+          }
+        },
+        "being": {
+          "background": "var(--color-beige)",
+          "color": "var(--color-dark)",
+          "hover": {
+            "background": "var(--color-light)",
+            "color": "var(--color-dark)"
+          },
+          "darkHover": {
+            "background": "var(--color-grey-500)",
+            "color": "var(--color-light)"
+          }
+        }
+      },
+      "example": {
+        "buildWithUs": {
+          "variant": "whiteOrange",
+          "description": "Tombol CTA 'Build with us' menggunakan varian .c-button--white-orange: latar putih dengan border putih berubah menjadi oranye ketika hover."
+        }
+      }
+    }
+  },
+  "hero": {
+    "display": "grid",
+    "minHeight": "100vh",
+    "alignment": "center",
+    "animation": "Elemen hero memiliki animasi fade-up (opacity dan translateY) serta menggunakan durasi dari variabel --hero-transition-time."
+  },
+  "contentBlocks": {
+    "latestNews": {
+      "layout": "Grid responsif yang berubah dari 1 kolom menjadi 2 dan 3 kolom saat lebar layar meningkat",
+      "gap": "40px–80px"
+    },
+    "textImage": {
+      "layout": "Grid; teks dan gambar ditempatkan dalam kolom yang berubah posisi tergantung variasi dan lebar layar",
+      "buttonMargin": "Margin kanan 8px, margin atas 40–64px untuk tombol di dalam blok ini"
+    },
+    "projectsSlider": {
+      "padding": "120px–180px vertikal",
+      "ctaColor": "Jika latar beige, tombol CTA menggunakan warna abu-abu (grey-500)"
+    }
+  }
+}

@@ -44,7 +44,7 @@ export default function ProductGrid() {
         
         <div className="mt-16 text-center">
           <p className="text-text-muted mb-6">Butuh spesifikasi khusus untuk industri Anda?</p>
-          <button className="text-primary font-bold border-b-2 border-accent hover:text-accent transition-colors">
+          <button className="text-primary font-bold border-b-2 border-primary hover:text-primary transition-colors">
             Unduh Katalog Lengkap (PDF)
           </button>
         </div>

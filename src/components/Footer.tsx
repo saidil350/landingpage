@@ -145,7 +145,7 @@ const Footer = () => {
                   <li key={lIdx}>
                     <Link
                       href={link.href}
-                      className="text-white/80 hover:text-accent transition-colors duration-200"
+                      className="text-white/80 hover:text-primary transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -159,19 +159,19 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 border-y border-white/5 mb-10">
           <div className="flex items-center gap-4 text-white/90">
-            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-accent">
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-primary">
               <Phone size={20} />
             </div>
             <span>+62 (21) 1234-5678</span>
           </div>
           <div className="flex items-center gap-4 text-white/90">
-            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-accent">
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-primary">
               <Mail size={20} />
             </div>
             <span>info@mrs-plastic.com</span>
           </div>
           <div className="flex items-center gap-4 text-white/90">
-            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-accent">
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-primary">
               <MapPin size={20} />
             </div>
             <span>Jakarta, Indonesia</span>

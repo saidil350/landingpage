@@ -99,8 +99,8 @@ const VideoHero = () => {
             Your browser does not support the video tag.
           </video>
 
-          {/* Dark Overlay - Minimal opacity (15%) for maximum video visibility */}
-          <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+          {/* Dark Overlay - Increased opacity (40%) for better text contrast */}
+          <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         </div>
 
         {/* Content Wrapper - Appears AFTER expansion */}
@@ -112,15 +112,15 @@ const VideoHero = () => {
           <div className="container-custom text-center px-4 pt-20">
             <h1
               ref={headingRef}
-              className="text-white mb-6"
-              style={{ textShadow: "none" }}
+              className="text-white mb-6 drop-shadow-lg"
+              style={{ textShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
             >
               Solusi Kemasan Plastik Terpercaya
             </h1>
             <p
               ref={headingRef}
-              className="text-white/90 text-xl max-w-3xl mx-auto mb-8"
-              style={{ textShadow: "none" }}
+              className="text-white/95 text-xl max-w-3xl mx-auto mb-12 drop-shadow-md"
+              style={{ textShadow: "0 2px 8px rgba(0,0,0,0.2)" }}
             >
               Menjadi perusahaan industri kemasan plastik multi nasional dengan tetap memperhatikan prinsip-prinsip ajaran Islam
             </p>

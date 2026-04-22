@@ -66,9 +66,9 @@ const Statistik = () => {
                 <span className="text-6xl md:text-7xl font-bold group-hover:text-primary transition-colors">
                   <Counter value={stat.value} />
                 </span>
-                <span className="text-2xl font-light text-primary">{stat.unit}</span>
+                <span className="text-2xl font-light text-white/80">{stat.unit}</span>
               </div>
-              <p className="text-sm font-bold tracking-[0.2em] opacity-60 uppercase">
+              <p className="text-sm font-bold tracking-[0.2em] text-white/60 uppercase">
                 {stat.label}
               </p>
             </motion.div>

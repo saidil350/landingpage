@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { Source_Sans_3 } from "next/font/google";
+import "@fontsource/source-sans-pro/200.css";
+import "@fontsource/source-sans-pro/300.css";
+import "@fontsource/source-sans-pro/400.css";
+import "@fontsource/source-sans-pro/600.css";
+import "@fontsource/source-sans-pro/700.css";
+import "@fontsource/source-sans-pro/900.css";
 import "./globals.css";
-
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans-3",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "MRS - Multi National Plastic Packaging Company | Solusi Kemasan Plastik Terpercaya",
@@ -38,7 +36,8 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${sourceSans.variable} h-full antialiased scroll-smooth`}
+      className="h-full antialiased scroll-smooth"
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full font-sans bg-bg-light text-foreground selection:bg-primary/30">
         {children}

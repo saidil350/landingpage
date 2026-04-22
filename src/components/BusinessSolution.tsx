@@ -47,13 +47,22 @@ const BusinessSolution = () => {
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.03, rotateX: 2 }}
+                whileHover={{ 
+                  scale: 1.03,
+                  y: -8,
+                  transition: { type: "spring", stiffness: 400, damping: 25 }
+                }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
                 onHoverStart={() => setHoveredIndustry(idx)}
                 onHoverEnd={() => setHoveredIndustry(null)}
                 className="relative bg-white rounded-2xl overflow-hidden card-hover-lift cursor-pointer group"
-                style={{ minHeight: "320px", transformStyle: "preserve-3d" }}
+                style={{ 
+                  minHeight: "320px",
+                  willChange: "transform",
+                  backfaceVisibility: "hidden",
+                  transform: "translateZ(0)"
+                }}
               >
                 {/* Background Image with Overlay */}
                 <div

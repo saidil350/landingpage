@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function TwoColumn() {
   return (
     <section
       id="produk"
-      className="section-padding overflow-hidden"
-      style={{ backgroundColor: '#f4f3ef' }}
+      className="section-padding overflow-hidden bg-bg-beige"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 items-center" style={{ columnGap: 'clamp(40px, 5vw, 80px)' }}>
 
@@ -19,36 +19,27 @@ export default function TwoColumn() {
            transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <h2
-            className="mb-4"
-            style={{
-              fontSize: 'clamp(28px, 3.5vw, 44px)',
-              fontWeight: 300,
-              lineHeight: 1.2,
-              color: '#1a2e2a'
-            }}
+            className="mb-4 text-dark"
           >
             Kapasitas Skala Besar
           </h2>
 
-          <p className="mb-4" style={{ fontSize: '15px', lineHeight: 1.75, color: '#3a5a50' }}>
+          <p className="mb-4 text-dark/80 text-lg leading-relaxed">
             Kami mensuplai ribuan ton biji plastik dan gulungan kemasan premium untuk berbagai korporasi manufaktur. Kecepatan respon dan jaminan mutu adalah keunggulan utama operasi kami.
           </p>
 
-          <p className="mb-8" style={{ fontSize: '15px', lineHeight: 1.75, color: '#3a5a50' }}>
+          <p className="mb-8 text-dark/80 text-lg leading-relaxed">
             Dengan jaringan distribusi yang luas dan sistem manajemen stok terintegrasi, kami memastikan rantai pasok bahan baku plastik industri Anda tidak pernah terputus.
           </p>
 
           <motion.a 
-            href="#kontak" 
-            className="link-arrow"
+            href="/kontak" 
+            className="btn-primary"
             whileHover={{ x: 10 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Kontak Tim Sales
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            <ArrowRight size={20} />
           </motion.a>
         </motion.div>
 

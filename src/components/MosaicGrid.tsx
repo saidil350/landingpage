@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function MosaicGrid() {
   return (
@@ -13,36 +14,26 @@ export default function MosaicGrid() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="section-padding flex flex-col justify-center"
-          style={{ backgroundColor: '#b8eae4' }}
+          className="section-padding flex flex-col justify-center bg-secondary/10"
         >
           <h2
-            className="mb-6"
-            style={{
-              fontSize: 'clamp(28px, 3.5vw, 44px)',
-              fontWeight: 300,
-              lineHeight: 1.2,
-              color: '#1a2e2a'
-            }}
+            className="mb-6 text-dark"
           >
             Keunggulan Distribusi
           </h2>
 
-          <p className="mb-8" style={{ fontSize: '15px', lineHeight: 1.75, color: '#1a2e2a' }}>
+          <p className="mb-8 text-dark/80 text-lg leading-relaxed">
             Logistik dan pergudangan yang didesain untuk kecepatan dan reliabilitas tanpa kompromi. Kami menjamin setiap pesanan diproses dengan efisiensi maksimal.
           </p>
 
-          <a href="#kontak" className="link-arrow" style={{ color: '#1a2e2a' }}>
+          <a href="/kontak" className="btn-primary w-fit">
             Pelajari Proses Kami
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            <ArrowRight size={20} />
           </a>
         </motion.div>
 
         {/* Right Grid - Dark Background with Mosaic */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -56,23 +47,21 @@ export default function MosaicGrid() {
               }
             }
           }}
-          style={{ backgroundColor: '#1a3a36', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' }}
+          className="grid grid-cols-2 gap-0 bg-dark"
         >
 
           {/* Cell 1 - Photo */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, scale: 0.8, filter: "grayscale(100%)" },
-              visible: { 
-                opacity: 1, 
-                scale: 1, 
-                filter: "grayscale(0%)",
-                transition: { duration: 0.7, ease: "easeOut" } 
+              hidden: { opacity: 0, scale: 0.9 },
+              visible: {
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 0.7, ease: "easeOut" }
               }
             }}
             whileHover={{ scale: 1.02 }}
-            className="photo-sharp relative overflow-hidden min-h-[200px]"
-            style={{ backgroundColor: '#2a5c4a' }}
+            className="relative overflow-hidden min-h-[240px] group"
           >
             <motion.div
               initial={{ scale: 1.2 }}
@@ -81,22 +70,23 @@ export default function MosaicGrid() {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: "url('/rolls.png')" }}
             ></motion.div>
+            <div className="absolute inset-0 bg-linear-to-t from-dark/60 via-transparent to-transparent"></div>
           </motion.div>
 
           {/* Cell 2 - Step 01 */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, x: 20 },
-              visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
             }}
-            className="flex flex-col justify-center p-6 md:p-8"
-            style={{ backgroundColor: '#1f4540', minHeight: '200px' }}
+            whileHover={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+            className="relative flex flex-col justify-center p-8 md:p-10 bg-white/4 border border-white/8 transition-colors"
           >
-            <span className="step-number mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>01.</span>
-            <h3 className="text-white mb-2" style={{ fontSize: '18px', fontWeight: 500, lineHeight: 1.3, color: '#F3F8F9' }}>
+            <span className="absolute top-6 right-6 text-5xl font-bold text-white/10 tracking-tighter">01</span>
+            <h3 className="text-white mb-3 font-semibold text-xl relative z-10">
               Stok Selalu Tersedia
             </h3>
-            <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#DBECF1' }}>
+            <p className="text-white/60 text-sm leading-relaxed relative z-10">
               Gudang raksasa dengan sistem inventaris terintegrasi
             </p>
           </motion.div>
@@ -104,17 +94,17 @@ export default function MosaicGrid() {
           {/* Cell 3 - Step 02 */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, x: 20 },
-              visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
             }}
-            className="flex flex-col justify-center p-6 md:p-8"
-            style={{ backgroundColor: '#1f4540', minHeight: '200px' }}
+            whileHover={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+            className="relative flex flex-col justify-center p-8 md:p-10 bg-white/4 border border-white/8 transition-colors"
           >
-            <span className="step-number mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>02.</span>
-            <h3 className="text-white mb-2" style={{ fontSize: '18px', fontWeight: 500, lineHeight: 1.3, color: '#F3F8F9' }}>
+            <span className="absolute top-6 right-6 text-5xl font-bold text-white/10 tracking-tighter">02</span>
+            <h3 className="text-white mb-3 font-semibold text-xl relative z-10">
               Layanan 24 Jam
             </h3>
-            <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#DBECF1' }}>
+            <p className="text-white/60 text-sm leading-relaxed relative z-10">
               Armada mandiri beroperasi 24/7 untuk pengiriman tepat waktu
             </p>
           </motion.div>
@@ -122,17 +112,15 @@ export default function MosaicGrid() {
           {/* Cell 4 - Photo */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, scale: 0.8, filter: "grayscale(100%)" },
-              visible: { 
-                opacity: 1, 
-                scale: 1, 
-                filter: "grayscale(0%)",
-                transition: { duration: 0.7, ease: "easeOut" } 
+              hidden: { opacity: 0, scale: 0.9 },
+              visible: {
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 0.7, ease: "easeOut" }
               }
             }}
             whileHover={{ scale: 1.02 }}
-            className="photo-sharp relative overflow-hidden min-h-[200px]"
-            style={{ backgroundColor: '#2a5c4a' }}
+            className="relative overflow-hidden min-h-[240px] group"
           >
             <motion.div
               initial={{ scale: 1.2 }}
@@ -141,22 +129,21 @@ export default function MosaicGrid() {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: "url('/packaging.png')" }}
             ></motion.div>
+            <div className="absolute inset-0 bg-linear-to-t from-dark/60 via-transparent to-transparent"></div>
           </motion.div>
 
           {/* Cell 5 - Photo */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, scale: 0.8, filter: "grayscale(100%)" },
-              visible: { 
-                opacity: 1, 
-                scale: 1, 
-                filter: "grayscale(0%)",
-                transition: { duration: 0.7, ease: "easeOut" } 
+              hidden: { opacity: 0, scale: 0.9 },
+              visible: {
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 0.7, ease: "easeOut" }
               }
             }}
             whileHover={{ scale: 1.02 }}
-            className="photo-sharp relative overflow-hidden min-h-[200px]"
-            style={{ backgroundColor: '#2a5c4a' }}
+            className="relative overflow-hidden min-h-[240px] group"
           >
             <motion.div
               initial={{ scale: 1.2 }}
@@ -165,22 +152,23 @@ export default function MosaicGrid() {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: "url('/hero.png')" }}
             ></motion.div>
+            <div className="absolute inset-0 bg-linear-to-t from-dark/60 via-transparent to-transparent"></div>
           </motion.div>
 
           {/* Cell 6 - Step 03 */}
           <motion.div
             variants={{
-              hidden: { opacity: 0, x: 20 },
-              visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
             }}
-            className="flex flex-col justify-center p-6 md:p-8"
-            style={{ backgroundColor: '#1f4540', minHeight: '200px' }}
+            whileHover={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+            className="relative flex flex-col justify-center p-8 md:p-10 bg-white/4 border border-white/8 transition-colors"
           >
-            <span className="step-number mb-3" style={{ color: 'rgba(255,255,255,0.45)' }}>03.</span>
-            <h3 className="text-white mb-2" style={{ fontSize: '18px', fontWeight: 500, lineHeight: 1.3, color: '#F3F8F9' }}>
+            <span className="absolute top-6 right-6 text-5xl font-bold text-white/10 tracking-tighter">03</span>
+            <h3 className="text-white mb-3 font-semibold text-xl relative z-10">
               Konsultasi B2B
             </h3>
-            <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#DBECF1' }}>
+            <p className="text-white/60 text-sm leading-relaxed relative z-10">
               Bantuan ahli pemilihan material untuk produksi massal
             </p>
           </motion.div>

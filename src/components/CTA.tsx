@@ -9,15 +9,15 @@ export default function CTA() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="bg-primary rounded-[3rem] p-12 md:p-20 relative overflow-hidden group shadow-2xl">
           {/* Animated Background Elements */}
-          <div className="absolute top-0 right-0 w-2/3 h-full bg-linear-to-l from-accent/20 to-transparent z-0" />
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition-all duration-700" />
+          <div className="absolute top-0 right-0 w-2/3 h-full bg-linear-to-l from-white/10 to-transparent z-0" />
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-700" />
           
           <div className="relative z-10 flex flex-col items-center text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center text-accent mb-8"
+              className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-8"
             >
               <MessageCircle size={40} />
             </motion.div>
@@ -28,7 +28,7 @@ export default function CTA() {
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-heading font-extrabold text-white mb-6 leading-tight max-w-4xl"
             >
-              Siap Meningkatkan Standar <span className="text-accent underline decoration-accent/30 underline-offset-8 italic">Supply Chain</span> Anda?
+              Siap Meningkatkan Standar <span className="text-white underline decoration-white/30 underline-offset-8 italic">Supply Chain</span> Anda?
             </motion.h2>
             
             <motion.p
@@ -48,7 +48,7 @@ export default function CTA() {
               transition={{ delay: 0.2 }}
               className="flex flex-wrap justify-center gap-6"
             >
-              <button className="bg-accent hover:bg-accent/90 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:-translate-y-1 shadow-xl shadow-accent/20 text-lg">
+              <button className="bg-white hover:bg-white/90 text-primary px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all hover:-translate-y-1 shadow-xl shadow-dark/20 text-lg">
                 Hubungi via WhatsApp <MessageCircle size={22} />
               </button>
               <button className="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/20 text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 transition-all text-lg">

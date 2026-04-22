@@ -42,7 +42,7 @@ const BrandPromise = () => {
           className="mb-20"
         >
           <h3 className="text-center text-2xl font-semibold mb-10">Misi Kami</h3>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-7">
             {brandPromise.mission.map((mission, idx) => (
               <motion.div
                 key={idx}
@@ -51,12 +51,12 @@ const BrandPromise = () => {
                 whileHover={{ scale: 1.02 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-white border border-black/5 card-hover-lift"
+                className="flex items-start gap-6 p-7 md:p-8 rounded-2xl bg-white border border-black/5 card-hover-lift"
               >
                 <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-1">
                   <div className="w-2 h-2 rounded-full bg-secondary" />
                 </div>
-                <p className="text-dark/90 leading-relaxed">{mission}</p>
+                <p className="text-dark/90 leading-[1.85]">{mission}</p>
               </motion.div>
             ))}
           </div>
@@ -69,7 +69,7 @@ const BrandPromise = () => {
           viewport={{ once: true }}
         >
           <h3 className="text-center text-2xl font-semibold mb-10">Nilai-Nilai Kami</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
             {brandPromise.values.map((value, idx) => {
               const IconComponent = iconMap[value.icon as keyof typeof iconMap];
               return (
@@ -77,16 +77,24 @@ const BrandPromise = () => {
                   key={idx}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05, rotateY: 5 }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -10,
+                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                  }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-white p-8 rounded-2xl border border-black/5 card-hover-lift text-center"
-                  style={{ transformStyle: "preserve-3d" }}
+                  className="bg-white p-9 rounded-2xl border border-black/5 shadow-sm hover:shadow-2xl hover:shadow-primary/10 text-center transition-shadow duration-300"
+                  style={{ 
+                    willChange: "transform",
+                    backfaceVisibility: "hidden",
+                    transform: "translateZ(0)"
+                  }}
                 >
                   <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform group-hover:scale-110">
                     {IconComponent && <IconComponent size={32} />}
                   </div>
-                  <h4 className="text-lg font-semibold mb-3 text-dark">{value.title}</h4>
+                  <h4 className="text-lg font-semibold mb-4 text-dark">{value.title}</h4>
                   <p className="text-dark/80 text-sm leading-relaxed">{value.description}</p>
                 </motion.div>
               );

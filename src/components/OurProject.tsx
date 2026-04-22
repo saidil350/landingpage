@@ -55,7 +55,7 @@ const OurProject = () => {
                 </div>
 
                 {/* Project Title */}
-                <h3 className="text-white text-2xl font-bold mb-2 group-hover:text-accent transition-colors">
+                <h3 className="text-white text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
 

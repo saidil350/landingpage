@@ -28,7 +28,7 @@ export default function DecorativeBadge({
   const variantClasses = {
     primary: 'bg-primary/10 text-primary border-primary/20',
     secondary: 'bg-secondary/10 text-secondary border-secondary/20',
-    accent: 'bg-accent/10 text-accent border-accent/20',
+    accent: 'bg-primary/10 text-primary border-primary/20',
   };
 
   const baseClasses = positionClasses[position];

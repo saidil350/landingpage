@@ -1,22 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* MRS Plastic Packaging Design System Colors */
+  /* MRS Plastic Packaging Design System — Sesuai css_summary.json */
 
-  /* Brand Colors */
-  --color-primary: #0066CC;      /* Corporate Blue - Trust & Professionalism */
-  --color-secondary: #009944;    /* Sustainability Green - Eco-friendly */
-  --color-dark: #1F1E1E;         /* Cod Gray - Text */
-  --color-accent: #FF6B35;       /* Orange Accent - CTAs only */
+  /* Brand Colors (dari variabel JSON) */
+  --color-orange: #ff5938;            /* --color-orange */
+  --color-green-100: #185649;         /* --color-green-100 */
+  --color-dark-green: #0f4338;        /* --color-dark-green */
+  --color-beige: #eee8e2;            /* --color-beige */
+  --color-dark: #1f1e1e;             /* --color-dark */
+  --color-light: #fefefe;            /* --color-light */
+  --color-grey-500: #9f908d;         /* --color-grey-500 */
+  --color-grey-600: #8d8d8d;         /* --color-grey-600 */
+
+  /* Semantic Colors — Mapping ke Tailwind */
+  --color-primary: #ff5938;           /* Orange — Brand primary */
+  --color-secondary: #185649;         /* Green 100 — Hijau tua */
+  --color-accent: #ff5938;            /* Sama dengan primary untuk kompatibilitas */
 
   /* Background Colors */
-  --color-bg-light: #FFFFFF;
-  --color-bg-beige: #F8F7F4;     /* Slightly warmer light gray with better contrast */
-  --color-bg-dark: #1F1E1E;
+  --color-bg-light: #fefefe;
+  --color-bg-beige: #eee8e2;
+  --color-bg-dark: #1f1e1e;
 
   /* Font */
-  --font-sans: var(--font-source-sans-3), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-heading: var(--font-source-sans-3), var(--font-sans);
+  --font-sans: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  --font-heading: "Source Sans Pro", Helvetica, Arial, sans-serif;
 
   /* Radius */
   --radius-card: 28px;
@@ -26,6 +35,31 @@
 :root {
   --background: var(--color-bg-light);
   --foreground: var(--color-dark);
+
+  /* Spacing & Layout dari JSON */
+  --spacing-unit: 8px;
+  --transition-default: 0.3s ease-in-out;
+  --hero-transition-time: 1000ms;
+
+  /* Header Height responsif */
+  --header-height: 70px;
+
+  /* Block Spacing responsif */
+  --block-spacing: 60px 0;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 118px;
+    --block-spacing: 80px 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 124px;
+    --block-spacing: 120px 0;
+  }
 }
 
 * {
@@ -46,7 +80,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 400;
-  color: var(--color-dark);
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -63,8 +96,6 @@ h2 {
 
 p {
   margin: 0;
-  color: var(--color-dark);
-  opacity: 0.9;  /* Increased from 0.8 for better readability */
 }
 
 /* Base Component Styles */
@@ -73,19 +104,190 @@ p {
     @apply max-w-[1240px] mx-auto px-6 lg:px-8;
   }
 
+  /* ========================================
+     BUTTON SYSTEM — Sesuai css_summary.json
+     c-button sebagai basis, varian menentukan warna
+     ======================================== */
+
+  /* Base Button */
+  .c-button {
+    @apply inline-flex items-center justify-center font-medium transition-all;
+    transition-duration: var(--transition-default);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Primary — Orange bg, putih text, hover ke dark */
+  .c-button--primary,
   .btn-primary {
-    @apply inline-flex items-center justify-center bg-primary text-white font-medium transition-all duration-300 hover:brightness-110 active:scale-95;
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300 active:scale-95;
+    background-color: var(--color-orange);
+    color: var(--color-light);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .c-button--primary:hover,
+  .btn-primary:hover {
+    background-color: var(--color-dark);
+  }
+
+  /* Secondary — Green bg, putih text, hover ke light bg + dark text */
+  .c-button--secondary,
+  .btn-secondary {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-green-100);
+    color: var(--color-light);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .c-button--secondary:hover,
+  .btn-secondary:hover {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+  }
+
+  /* Secondary Dark — Dark Green bg */
+  .c-button--secondary-dark {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-dark-green);
+    color: var(--color-light);
     padding: 12px 32px;
     border-radius: var(--radius-btn);
     gap: 10px;
   }
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center border-2 border-primary text-primary font-medium transition-all duration-300 hover:bg-primary hover:text-white;
+  /* White — Putih bg, border putih, hover ke transparan */
+  .c-button--white,
+  .btn-white {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-light);
+    color: var(--color-dark);
     padding: 12px 32px;
     border-radius: var(--radius-btn);
     gap: 10px;
   }
+  .c-button--white:hover,
+  .btn-white:hover {
+    background-color: transparent;
+    color: var(--color-light);
+  }
+
+  /* White Orange — Putih bg, hover ke orange */
+  .c-button--white-orange,
+  .btn-white-orange {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-light);
+    color: var(--color-dark);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .c-button--white-orange:hover,
+  .btn-white-orange:hover {
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+    color: var(--color-light);
+    transform: scale(0.97);
+  }
+
+  /* White Grey — Putih bg, hover ke grey */
+  .c-button--white-grey {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-light);
+    color: var(--color-dark);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .c-button--white-grey:hover {
+    background-color: var(--color-grey-500);
+    border-color: var(--color-grey-500);
+    color: var(--color-light);
+  }
+
+  /* Border White — Transparan bg, border putih */
+  .c-button--border-white,
+  .btn-border-white {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: transparent;
+    border: 1px solid var(--color-light);
+    color: var(--color-light);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .c-button--border-white:hover,
+  .btn-border-white:hover {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    transform: scale(0.97);
+  }
+
+  /* Grey — Grey bg */
+  .c-button--grey {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-grey-500);
+    color: var(--color-light);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .c-button--grey:hover {
+    background-color: var(--color-light);
+    color: var(--color-grey-500);
+  }
+
+  /* Small — Beige bg, radius kecil */
+  .c-button--small {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-beige);
+    border-radius: 9px;
+    padding: 11px 16px;
+    color: var(--color-dark);
+    gap: 8px;
+  }
+  .c-button--small:hover {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+  }
+
+  /* Beige — Beige bg */
+  .c-button--beige {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300;
+    background-color: var(--color-beige);
+    color: var(--color-dark);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .c-button--beige:hover {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+  }
+
+  /* Ghost Button — untuk kompatibilitas mundane */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center bg-transparent font-medium transition-all duration-300;
+    color: var(--color-primary);
+    padding: 12px 32px;
+    border-radius: var(--radius-btn);
+    gap: 10px;
+  }
+  .btn-ghost:hover {
+    background-color: rgba(255, 89, 56, 0.1);
+  }
+
+  /* ========================================
+     SECTION & CARD STYLES
+     ======================================== */
 
   .section-padding {
     padding-top: clamp(80px, 10vw, 120px);
@@ -103,25 +305,32 @@ p {
   }
 
   .accent-text {
-    color: var(--color-secondary);  /* Changed from accent to secondary for better contrast */
-  }
-
-  /* Enhanced Button Variants */
-  .btn-ghost {
-    @apply inline-flex items-center justify-center bg-transparent text-primary font-medium transition-all duration-300 hover:bg-primary/10;
-    padding: 12px 32px;
-    border-radius: var(--radius-btn);
-    gap: 10px;
+    color: var(--color-orange);
   }
 
   /* Enhanced Card Pop Effect */
   .card-hover-lift {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 
   .card-hover-lift:hover {
     transform: scale(1.05) translateY(-4px);
-    box-shadow: 0 25px 50px rgba(0, 102, 204, 0.15), 0 0 0 1px rgba(0, 102, 204, 0.05);
+    box-shadow: 0 25px 50px rgba(255, 89, 56, 0.15), 0 0 0 1px rgba(255, 89, 56, 0.05);
+  }
+
+  /* Fluid Padding dari JSON */
+  .fluid-padding--sm {
+    padding: calc(15% - 10vw) 0;
+  }
+
+  .fluid-padding--md {
+    padding: calc(17.5% - 10vw) 0;
+  }
+
+  .fluid-padding--lg {
+    padding: calc(20% - 10vw) 0;
   }
 }
 

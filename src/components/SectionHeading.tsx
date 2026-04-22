@@ -17,7 +17,7 @@ export default function SectionHeading({ title, subtitle, badge, centered = fals
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-block px-3 py-1 bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-widest rounded-lg mb-4"
+          className="inline-block px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest rounded-lg mb-4"
         >
           {badge}
         </motion.span>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Plus, Maximize2 } from "lucide-react";
+import { Maximize2 } from "lucide-react";
 
 interface ProductCardProps {
   title: string;
@@ -17,7 +17,7 @@ export default function ProductCard({ title, specs, image, category }: ProductCa
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group bg-white rounded-3xl border border-border overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2"
+      className="group bg-white rounded-3xl border border-border overflow-hidden hover:shadow-[0_24px_42px_-26px_rgba(255,89,56,0.45)] transition-all duration-500 hover:-translate-y-2"
     >
       <div className="relative h-64 overflow-hidden">
         <Image
@@ -40,20 +40,17 @@ export default function ProductCard({ title, specs, image, category }: ProductCa
       </div>
 
       <div className="p-8">
-        <h3 className="text-xl font-heading font-bold text-primary mb-4 group-hover:text-accent transition-colors">
+        <h3 className="text-xl font-heading font-bold text-primary mb-4 group-hover:text-primary transition-colors">
           {title}
         </h3>
-        <ul className="space-y-2 mb-8">
+        <ul className="space-y-2">
           {specs.map((spec, i) => (
             <li key={i} className="flex items-center gap-2 text-sm text-text-muted">
-              <div className="w-1.5 h-1.5 rounded-full bg-accent/40" />
+              <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
               {spec}
             </li>
           ))}
         </ul>
-        <button className="w-full py-4 rounded-2xl bg-background border border-border text-primary font-bold flex items-center justify-center gap-2 hover:bg-primary hover:text-white hover:border-primary transition-all group/btn">
-          Pesan Custom <Plus size={18} className="group-hover/btn:rotate-90 transition-transform" />
-        </button>
       </div>
     </motion.div>
   );

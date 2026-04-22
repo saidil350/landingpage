@@ -44,6 +44,7 @@ const Navigasi = () => {
     { name: "Proyek", href: "/proyek" },
     { name: "Berita", href: "/blog" },
   ];
+  const contactHref = "/kontak";
 
   return (
     <header
@@ -79,7 +80,7 @@ const Navigasi = () => {
               className={`font-medium transition-colors text-sm uppercase tracking-wider ${
                 !isHomePage || isScrolled
                   ? "text-[#1F1E1E]/80 hover:text-primary"
-                  : "text-white/90 hover:text-accent"
+                  : "text-white/90 hover:text-primary"
               }`}
             >
               {link.name}
@@ -89,7 +90,7 @@ const Navigasi = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Link href="#kontak" className="btn-primary py-2.5 px-6 text-sm">
+          <Link href={contactHref} className="btn-primary py-2.5 px-6 text-sm">
             Hubungi Kami
             <ArrowRight size={16} />
           </Link>
@@ -128,7 +129,7 @@ const Navigasi = () => {
                 </Link>
               ))}
               <Link
-                href="#kontak"
+                href={contactHref}
                 onClick={() => setIsOpen(false)}
                 className="btn-primary w-full justify-between"
               >

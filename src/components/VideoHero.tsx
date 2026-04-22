@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import gsap from "gsap";
@@ -15,6 +15,27 @@ const VideoHero = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryAutoplay = () => {
+      void video.play().catch(() => {
+        // Some browsers block autoplay until explicit user interaction.
+      });
+    };
+
+    if (video.readyState >= 2) {
+      tryAutoplay();
+      return;
+    }
+
+    video.addEventListener("canplay", tryAutoplay, { once: true });
+    return () => {
+      video.removeEventListener("canplay", tryAutoplay);
+    };
+  }, []);
 
   useGSAP(() => {
     // Set initial state immediately
@@ -93,9 +114,12 @@ const VideoHero = () => {
             muted
             loop
             playsInline
+            controls
+            preload="metadata"
+            poster="/hero_background.png"
             className="w-full h-full object-cover"
           >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/hero-video-web.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 

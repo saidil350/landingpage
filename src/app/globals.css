@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Virya Energy Design System Colors */
+  /* MRS Plastic Packaging Design System Colors */
 
   /* Brand Colors */
-  --color-primary: #FF5938;      /* Orange */
-  --color-secondary: #004E4B;    /* Dark Teal */
-  --color-dark: #1F1E1E;         /* Cod Gray */
-  --color-accent: #9F908D;       /* Zorba / Muted Gray-Brown */
+  --color-primary: #0066CC;      /* Corporate Blue - Trust & Professionalism */
+  --color-secondary: #009944;    /* Sustainability Green - Eco-friendly */
+  --color-dark: #1F1E1E;         /* Cod Gray - Text */
+  --color-accent: #FF6B35;       /* Orange Accent - CTAs only */
 
   /* Background Colors */
   --color-bg-light: #FFFFFF;
-  --color-bg-beige: #EFECE6;
+  --color-bg-beige: #F8F7F4;     /* Slightly warmer light gray with better contrast */
   --color-bg-dark: #1F1E1E;
 
   /* Font */
@@ -64,7 +64,7 @@ h2 {
 p {
   margin: 0;
   color: var(--color-dark);
-  opacity: 0.8;
+  opacity: 0.9;  /* Increased from 0.8 for better readability */
 }
 
 /* Base Component Styles */
@@ -93,8 +93,9 @@ p {
   }
 
   .card-premium {
-    @apply bg-white p-8 transition-all duration-500 hover:shadow-xl hover:-translate-y-1;
+    @apply bg-white p-8 transition-all duration-300;
     border-radius: var(--radius-card);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .glass-header {
@@ -102,7 +103,7 @@ p {
   }
 
   .accent-text {
-    color: var(--color-accent);
+    color: var(--color-secondary);  /* Changed from accent to secondary for better contrast */
   }
 
   /* Enhanced Button Variants */
@@ -113,14 +114,14 @@ p {
     gap: 10px;
   }
 
-  /* Enhanced Card Hover */
+  /* Enhanced Card Pop Effect */
   .card-hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   .card-hover-lift:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transform: scale(1.05) translateY(-4px);
+    box-shadow: 0 25px 50px rgba(0, 102, 204, 0.15), 0 0 0 1px rgba(0, 102, 204, 0.05);
   }
 }
 

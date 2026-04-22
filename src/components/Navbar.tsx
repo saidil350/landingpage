@@ -1,33 +1,57 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Navigasi = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const logoTextRef = useRef<HTMLSpanElement>(null);
+  const navLinksRef = useRef<HTMLDivElement>(null);
+
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
+    if (!isHomePage) {
+      // For non-home pages, set scrolled state to true immediately
+      setIsScrolled(true);
+      return;
+    }
+
+    // For home page, add scroll listener
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
 
-  const navLinks = [
-    { name: "Keahlian Kami", href: "#keahlian" },
-    { name: "Proyek", href: "#proyek" },
-    { name: "Tentang Kami", href: "#tentang" },
-    { name: "Sumber Daya", href: "#sumber-daya" },
+  const navLinksData = [
+    { name: "Beranda", href: "/" },
+    { name: "Tentang Kami", href: "/tentang-perusahaan" },
+    { name: "Produk & Layanan", href: "/layanan" },
+    { name: "Proyek", href: "/proyek" },
+    { name: "Berita", href: "/blog" },
   ];
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
+        !isHomePage || isScrolled
+          ? "bg-white/95 backdrop-blur-md shadow-md py-4"
+          : "bg-transparent py-6"
       }`}
     >
       <div className="container-custom flex items-center justify-between">
@@ -36,18 +60,27 @@ const Navigasi = () => {
           <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center transition-transform group-hover:rotate-12">
             <div className="w-3 h-3 bg-white rounded-full" />
           </div>
-          <span className="text-2xl font-semibold tracking-tight text-dark">
-            virya energy
+          <span
+            ref={logoTextRef}
+            className={`text-2xl font-semibold tracking-tight transition-colors duration-300 ${
+              !isHomePage || isScrolled ? "text-[#1F1E1E]" : "text-white"
+            }`}
+          >
+            MRS
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
+        <nav ref={navLinksRef} className="hidden md:flex items-center gap-10">
+          {navLinksData.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-dark/70 hover:text-primary font-medium transition-colors text-sm uppercase tracking-wider"
+              className={`font-medium transition-colors text-sm uppercase tracking-wider ${
+                !isHomePage || isScrolled
+                  ? "text-[#1F1E1E]/80 hover:text-primary"
+                  : "text-white/90 hover:text-accent"
+              }`}
             >
               {link.name}
             </Link>
@@ -57,14 +90,16 @@ const Navigasi = () => {
         {/* CTA Button */}
         <div className="hidden md:block">
           <Link href="#kontak" className="btn-primary py-2.5 px-6 text-sm">
-            Bangun Bersama Kami
+            Hubungi Kami
             <ArrowRight size={16} />
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-dark p-2"
+          className={`md:hidden p-2 transition-colors duration-300 ${
+            !isHomePage || isScrolled ? "text-[#1F1E1E]" : "text-white"
+          }`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
@@ -82,12 +117,12 @@ const Navigasi = () => {
             className="absolute top-full left-0 right-0 bg-white border-b border-black/5 p-6 md:hidden shadow-xl"
           >
             <div className="flex flex-col gap-6">
-              {navLinks.map((link) => (
+              {navLinksData.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-dark/80 hover:text-primary transition-colors"
+                  className="text-lg font-medium text-dark/90 hover:text-secondary transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -97,7 +132,7 @@ const Navigasi = () => {
                 onClick={() => setIsOpen(false)}
                 className="btn-primary w-full justify-between"
               >
-                Bangun Bersama Kami
+                Hubungi Kami
                 <ArrowRight size={20} />
               </Link>
             </div>

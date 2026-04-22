@@ -21,10 +21,10 @@ const AjakanAksi = () => {
           className="max-w-4xl mx-auto"
         >
           <h2 className="text-white mb-8 text-5xl md:text-6xl leading-tight">
-            Siap untuk membangun proyek <span className="text-primary italic">energi</span> Anda?
+            Siap meningkatkan kualitas <span className="text-accent italic">kemasan</span> Anda?
           </h2>
-          <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
-            Hubungi tim ahli kami hari ini untuk konsultasi gratis mengenai infrastruktur energi terbarukan dan solusi keberlanjutan.
+          <p className="text-xl text-white mb-12 max-w-2xl mx-auto">
+            Konsultasikan kebutuhan kemasan plastik dengan tim ahli kami. Dapatkan penawaran khusus untuk order pertama.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -33,7 +33,7 @@ const AjakanAksi = () => {
               <ArrowRight size={24} />
             </button>
             <button className="text-white font-semibold hover:text-primary transition-colors text-lg flex items-center gap-2 group">
-              Lihat Prosedur Kerja
+              Download Katalog
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}

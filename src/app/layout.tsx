@@ -10,13 +10,22 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Virya Energy - Membangun Masa Depan Berkelanjutan",
-  description: "Virya Energy adalah pemimpin dalam solusi energi terbarukan, menghadirkan inovasi tenaga angin dan surya untuk dunia yang lebih bersih.",
-  keywords: ["energi terbarukan", "tenaga surya", "tenaga angin", "keberlanjutan", "Virya Energy"],
-  authors: [{ name: "Virya Energy" }],
+  title: "MRS - Multi National Plastic Packaging Company | Solusi Kemasan Plastik Terpercaya",
+  description: "MRS adalah pemimpin industri kemasan plastik multi nasional, menyediakan solusi kemasan berkualitas tinggi dengan standar internasional dan sertifikasi Halal.",
+  keywords: [
+    "kemasan plastik",
+    "plastic packaging",
+    "packaging Indonesia",
+    "kemasan food grade",
+    "plastic packaging manufacturer",
+    "MRS plastic",
+    "kemasan halal",
+    "industrial packaging",
+  ],
+  authors: [{ name: "MRS - Multi National Plastic Packaging" }],
   openGraph: {
-    title: "Virya Energy - Sustainable Energy Solutions",
-    description: "Leading the transition to a sustainable future with clean energy infrastructure.",
+    title: "MRS - Multi National Plastic Packaging Company",
+    description: "Solusi kemasan plastik terpercaya dengan standar internasional dan nilai-nilai Islam",
     type: "website",
   },
 };

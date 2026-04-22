@@ -78,30 +78,30 @@ const Footer = () => {
 
   const footerLinks = [
     {
-      title: "Solusi",
+      title: "Produk",
       links: [
-        { name: "Tenaga Angin", href: "#" },
-        { name: "Tenaga Surya", href: "#" },
-        { name: "Penyimpanan Energi", href: "#" },
-        { name: "Grid Pintar", href: "#" },
+        { name: "Kemasan F&B", href: "/layanan#produk-fb" },
+        { name: "Industrial Packaging", href: "/layanan#produk-industrial" },
+        { name: "E-commerce Bags", href: "/layanan#produk-ecommerce" },
+        { name: "Custom Solutions", href: "/layanan#produk-custom" },
       ],
     },
     {
       title: "Perusahaan",
       links: [
-        { name: "Tentang Kami", href: "#" },
-        { name: "Tim Eksekutif", href: "#" },
-        { name: "Karier", href: "#" },
-        { name: "Berita & Media", href: "#" },
+        { name: "Tentang Kami", href: "/tentang-perusahaan" },
+        { name: "Tim Manajemen", href: "/tentang-perusahaan#tim" },
+        { name: "Karier", href: "/tentang-perusahaan#karier" },
+        { name: "Berita & Media", href: "/blog" },
       ],
     },
     {
-      title: "Sumber Daya",
+      title: "Sertifikasi",
       links: [
-        { name: "Studi Kasus", href: "#" },
-        { name: "Laporan Dampak", href: "#" },
-        { name: "Dokumentasi", href: "#" },
-        { name: "Pusat Bantuan", href: "#" },
+        { name: "ISO 9001:2015", href: "/tentang-perusahaan#iso" },
+        { name: "Halal MUI", href: "/tentang-perusahaan#halal" },
+        { name: "SNI", href: "/tentang-perusahaan#sni" },
+        { name: "Food Grade", href: "/tentang-perusahaan#food-grade" },
       ],
     },
   ];
@@ -117,11 +117,11 @@ const Footer = () => {
                 <div className="w-3 h-3 bg-white rounded-full" />
               </div>
               <span className="text-2xl font-semibold tracking-tight">
-                virya energy
+                MRS
               </span>
             </Link>
-            <p className="text-white/50 mb-8 max-w-sm leading-relaxed">
-              Mempercepat transisi dunia ke energi berkelanjutan melalui inovasi infrastruktur dan operasional kelas dunia.
+            <p className="text-white/90 mb-8 max-w-sm leading-relaxed">
+              Solusi kemasan plastik berkualitas tinggi dengan standar internasional dan nilai-nilai Islam.
             </p>
             <div className="flex gap-4">
               {[Linkedin, Twitter, Facebook, Instagram].map((Icon, idx) => (
@@ -145,7 +145,7 @@ const Footer = () => {
                   <li key={lIdx}>
                     <Link
                       href={link.href}
-                      className="text-white/50 hover:text-primary transition-colors duration-200"
+                      className="text-white/80 hover:text-accent transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -158,20 +158,20 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 border-y border-white/5 mb-10">
-          <div className="flex items-center gap-4 text-white/70">
-            <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-primary">
+          <div className="flex items-center gap-4 text-white/90">
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-accent">
               <Phone size={20} />
             </div>
             <span>+62 (21) 1234-5678</span>
           </div>
-          <div className="flex items-center gap-4 text-white/70">
-            <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-primary">
+          <div className="flex items-center gap-4 text-white/90">
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-accent">
               <Mail size={20} />
             </div>
-            <span>contact@viryaenergy.id</span>
+            <span>info@mrs-plastic.com</span>
           </div>
-          <div className="flex items-center gap-4 text-white/70">
-            <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-primary">
+          <div className="flex items-center gap-4 text-white/90">
+            <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-accent">
               <MapPin size={20} />
             </div>
             <span>Jakarta, Indonesia</span>
@@ -179,12 +179,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-white/30 text-sm">
-          <p>© {currentYear} Virya Energy. Seluruh hak cipta dilindungi.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-white/70 text-sm">
+          <p>© {currentYear} MRS - Multi National Plastic Packaging. Seluruh hak cipta dilindungi.</p>
           <div className="flex gap-8">
-            <Link href="#" className="hover:text-primary transition-colors">Kebijakan Privasi</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Syarat & Ketentuan</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Cookies</Link>
+            <Link href="#" className="hover:text-white transition-colors">Kebijakan Privasi</Link>
+            <Link href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
+            <Link href="#" className="hover:text-white transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

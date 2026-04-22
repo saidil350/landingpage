@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stats = [
-  { value: 121, unit: "MW", label: "BEROPERASI" },
-  { value: 3.5, unit: "GW", label: "DALAM PENGEMBANGAN" },
-  { value: 12, unit: "TAHUN", label: "PENGALAMAN" },
-  { value: 500, unit: "+", label: "GWh ENERGI BERSIH" },
+  { value: 25, unit: "TAHUN", label: "PENGALAMAN INDUSTRI" },
+  { value: 500, unit: "+", label: "KLIEN TRUSTED" },
+  { value: 50, unit: "JUTA", label: "PRODUKSI/TAHUN" },
+  { value: 15, unit: "", label: "CERTIFIED INTERNATIONAL" },
 ];
 
 // Counter animation component
@@ -82,8 +82,8 @@ const Statistik = () => {
           transition={{ delay: 0.5 }}
           className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8"
         >
-          <h3 className="text-3xl md:text-4xl text-white font-light italic max-w-3xl leading-snug">
-            "Kami berkomitmen untuk mempercepat transisi energi menuju masa depan yang netral karbon."
+          <h3 className="text-3xl md:text-4xl text-white font-medium italic max-w-3xl leading-snug">
+            "Kami berkomitmen menyediakan solusi kemasan plastik berkualitas tinggi dengan menjunjung tinggi nilai-nilai Islam dalam setiap aspek operasional."
           </h3>
           <div className="h-px w-24 bg-primary hidden lg:block" />
         </motion.div>

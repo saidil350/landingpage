@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(claude mcp *)",
+      "Bash(npx -y @modelcontextprotocol/server-figma --help)",
+      "WebSearch"
+    ]
+  }
+}

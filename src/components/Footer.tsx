@@ -75,33 +75,34 @@ const Instagram = ({ className, size = 24 }: { className?: string; size?: number
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const fallbackHref = "/kontak";
 
   const footerLinks = [
     {
       title: "Produk",
       links: [
-        { name: "Kemasan F&B", href: "/layanan#produk-fb" },
-        { name: "Industrial Packaging", href: "/layanan#produk-industrial" },
-        { name: "E-commerce Bags", href: "/layanan#produk-ecommerce" },
-        { name: "Custom Solutions", href: "/layanan#produk-custom" },
+        { name: "Kemasan F&B", href: "/layanan#produk" },
+        { name: "Industrial Packaging", href: "/layanan#produk" },
+        { name: "E-commerce Bags", href: "/layanan#produk" },
+        { name: "Custom Solutions", href: "/layanan#produk" },
       ],
     },
     {
       title: "Perusahaan",
       links: [
         { name: "Tentang Kami", href: "/tentang-perusahaan" },
-        { name: "Tim Manajemen", href: "/tentang-perusahaan#tim" },
-        { name: "Karier", href: "/tentang-perusahaan#karier" },
+        { name: "Tim Manajemen", href: "/tentang-perusahaan#people" },
+        { name: "Karier", href: fallbackHref },
         { name: "Berita & Media", href: "/blog" },
       ],
     },
     {
       title: "Sertifikasi",
       links: [
-        { name: "ISO 9001:2015", href: "/tentang-perusahaan#iso" },
-        { name: "Halal MUI", href: "/tentang-perusahaan#halal" },
-        { name: "SNI", href: "/tentang-perusahaan#sni" },
-        { name: "Food Grade", href: "/tentang-perusahaan#food-grade" },
+        { name: "ISO 9001:2015", href: "/tentang-perusahaan#sertifikasi" },
+        { name: "Halal MUI", href: "/tentang-perusahaan#sertifikasi" },
+        { name: "SNI", href: "/tentang-perusahaan#sertifikasi" },
+        { name: "Food Grade", href: "/tentang-perusahaan#sertifikasi" },
       ],
     },
   ];
@@ -127,7 +128,7 @@ const Footer = () => {
               {[Linkedin, Twitter, Facebook, Instagram].map((Icon, idx) => (
                 <Link
                   key={idx}
-                  href="#"
+                  href={fallbackHref}
                   className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300"
                 >
                   <Icon size={18} />
@@ -182,9 +183,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-white/70 text-sm">
           <p>© {currentYear} MRS - Multi National Plastic Packaging. Seluruh hak cipta dilindungi.</p>
           <div className="flex gap-8">
-            <Link href="#" className="hover:text-white transition-colors">Kebijakan Privasi</Link>
-            <Link href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
-            <Link href="#" className="hover:text-white transition-colors">Cookies</Link>
+            <Link href={fallbackHref} className="hover:text-white transition-colors">Kebijakan Privasi</Link>
+            <Link href={fallbackHref} className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
+            <Link href={fallbackHref} className="hover:text-white transition-colors">Cookies</Link>
           </div>
         </div>
       </div>

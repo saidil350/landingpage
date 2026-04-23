@@ -7,7 +7,7 @@ export const teamMembers: TeamMember[] = [
     bio:
       "Memimpin arah ekspansi perusahaan dengan fokus pada tata kelola, kemitraan jangka panjang, dan pertumbuhan yang tetap selaras dengan nilai-nilai Islam.",
     photo: "/hero.png",
-    linkedin: "#",
+    linkedin: "/kontak",
   },
   {
     name: "Dewi Kartika",
@@ -15,7 +15,7 @@ export const teamMembers: TeamMember[] = [
     bio:
       "Mengawal integrasi lini produksi, quality control, dan efisiensi proses agar setiap pesanan berjalan konsisten dari bahan baku hingga pengiriman.",
     photo: "/hero1.png",
-    linkedin: "#",
+    linkedin: "/kontak",
   },
   {
     name: "Muhammad Ilham",
@@ -23,6 +23,6 @@ export const teamMembers: TeamMember[] = [
     bio:
       "Menerjemahkan kebutuhan industri menjadi solusi kemasan yang relevan, scalable, dan siap diimplementasikan untuk berbagai model distribusi.",
     photo: "/hero_background.png",
-    linkedin: "#",
+    linkedin: "/kontak",
   },
 ];

@@ -1,33 +1,141 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import { PlayCircle } from "lucide-react";
 import { companyProfileVideo } from "@/data/company-profile";
+import { stats } from "@/data/stats";
+import { gsap, motionQueries, motionTokens } from "@/lib/gsap-client";
+
+const formatMetricValue = (value: number) =>
+  Number.isInteger(value) ? `${Math.round(value)}` : value.toFixed(1);
 
 export default function CompanyProfileVideo() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const metricRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  useGSAP(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add(motionQueries.noPreference, () => {
+      const introItems = Array.from(section.querySelectorAll<HTMLElement>("[data-company-intro]"));
+      const highlights = Array.from(section.querySelectorAll<HTMLElement>("[data-company-highlight]"));
+      const pills = Array.from(section.querySelectorAll<HTMLElement>("[data-company-pill]"));
+      const mediaCard = section.querySelector<HTMLElement>("[data-company-media]");
+      const metricCards = Array.from(section.querySelectorAll<HTMLElement>("[data-company-metric]"));
+
+      const tl = gsap.timeline({
+        defaults: { ease: motionTokens.ease.enter },
+        scrollTrigger: {
+          trigger: section,
+          start: "top 72%",
+          once: true,
+        },
+      });
+
+      tl.from(introItems, {
+        autoAlpha: 0,
+        y: motionTokens.offsets.intro,
+        duration: motionTokens.durations.sectionIntro,
+        stagger: motionTokens.stagger.default,
+      })
+        .from(
+          highlights,
+          {
+            autoAlpha: 0,
+            y: motionTokens.offsets.softCard,
+            duration: motionTokens.durations.sectionCard,
+            stagger: motionTokens.stagger.default,
+          },
+          "-=0.46"
+        )
+        .from(
+          pills,
+          {
+            autoAlpha: 0,
+            y: motionTokens.offsets.pills,
+            scale: 0.975,
+            duration: motionTokens.durations.pills,
+            stagger: motionTokens.stagger.pills,
+            ease: motionTokens.ease.enter,
+          },
+          "-=0.56"
+        )
+        .from(
+          mediaCard,
+          {
+            autoAlpha: 0,
+            y: motionTokens.offsets.block,
+            scale: 0.992,
+            duration: motionTokens.durations.crossfade,
+            ease: motionTokens.ease.soft,
+          },
+          "-=0.6"
+        )
+        .from(
+          metricCards,
+          {
+            autoAlpha: 0,
+            y: motionTokens.offsets.softCard,
+            duration: motionTokens.durations.sectionCard,
+            stagger: motionTokens.stagger.default,
+            onStart: () => {
+              metricRefs.current.forEach((metricRef, index) => {
+                if (!metricRef) return;
+
+                metricRef.textContent = "0";
+                const counter = { value: 0 };
+
+                gsap.to(counter, {
+                  value: stats[index].value,
+                  duration: motionTokens.durations.metrics + index * 0.08,
+                  ease: motionTokens.ease.soft,
+                  overwrite: true,
+                  onUpdate: () => {
+                    metricRef.textContent = formatMetricValue(counter.value);
+                  },
+                });
+              });
+            },
+          },
+          "-=0.52"
+        );
+    });
+
+    mm.add(motionQueries.reduce, () => {
+      metricRefs.current.forEach((metricRef, index) => {
+        if (metricRef) {
+          metricRef.textContent = formatMetricValue(stats[index].value);
+        }
+      });
+    });
+
+    return () => mm.revert();
+  }, { scope: sectionRef });
+
   return (
-    <section id="company-profile" className="section-padding bg-dark text-white">
+    <section ref={sectionRef} id="company-profile" className="section-padding bg-dark text-white">
       <div className="container-custom grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="max-w-xl"
-        >
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">
+        <div className="max-w-xl">
+          <p
+            data-company-intro
+            className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55"
+          >
             Company Profile Video
           </p>
-          <h2 className="mb-5 text-white">
+          <h2 data-company-intro className="mb-5 text-white">
             Melihat lebih dekat cara MRS membangun kualitas dari hulu ke hilir.
           </h2>
-          <p className="mb-8 text-lg leading-relaxed text-white/75">
+          <p data-company-intro className="mb-8 text-lg leading-relaxed text-white/75">
             {companyProfileVideo.description}
           </p>
 
           <div className="mb-10 space-y-4 border-l border-white/15 pl-5">
             {companyProfileVideo.highlights.map((item) => (
-              <div key={item} className="flex gap-3">
+              <div key={item} data-company-highlight className="flex gap-3">
                 <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
                 <p className="text-white/78">{item}</p>
               </div>
@@ -35,21 +143,24 @@ export default function CompanyProfileVideo() {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
-            <span className="rounded-full border border-white/15 px-4 py-2">
+            <span
+              data-company-pill
+              className="rounded-full border border-white/15 px-4 py-2"
+            >
               Durasi {companyProfileVideo.duration}
             </span>
-            <span className="rounded-full border border-white/15 px-4 py-2">
+            <span
+              data-company-pill
+              className="rounded-full border border-white/15 px-4 py-2"
+            >
               Manufacturing, quality, distribution
             </span>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.a
+        <a
           href={companyProfileVideo.videoUrl}
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
+          data-company-media
           className="group relative block overflow-hidden rounded-[32px]"
         >
           <div className="aspect-video overflow-hidden">
@@ -86,7 +197,36 @@ export default function CompanyProfileVideo() {
               </span>
             </div>
           </div>
-        </motion.a>
+        </a>
+      </div>
+
+      <div className="container-custom mt-10">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {stats.map((item, index) => (
+            <div
+              key={item.label}
+              data-company-metric
+              className="rounded-[24px] border border-white/10 bg-white/5 px-6 py-5 backdrop-blur-sm"
+            >
+              <div className="mb-2 flex items-end gap-2">
+                <span
+                  ref={(node) => {
+                    metricRefs.current[index] = node;
+                  }}
+                  className="text-4xl font-semibold text-white md:text-5xl"
+                >
+                  {formatMetricValue(item.value)}
+                </span>
+                <span className="pb-1 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+                  {item.unit}
+                </span>
+              </div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/60">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

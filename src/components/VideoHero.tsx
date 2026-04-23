@@ -3,10 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ArrowRight, PlayCircle } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { gsap, motionQueries, motionTokens } from "@/lib/gsap-client";
 
 const VideoHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -15,6 +12,7 @@ const VideoHero = () => {
   const buttonsRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -39,73 +37,156 @@ const VideoHero = () => {
   }, []);
 
   useGSAP(() => {
-    gsap.set(containerRef.current, {
-      width: "80%",
-      height: "80vh",
-      borderRadius: "40px",
-      scale: 0.9,
+    const mm = gsap.matchMedia();
+
+    mm.add(motionQueries.reduce, () => {
+      const heroButtons = Array.from(
+        buttonsRef.current?.querySelectorAll<HTMLElement>("[data-hero-cta]") ?? []
+      );
+
+      gsap.set(containerRef.current, {
+        width: "100%",
+        height: "100%",
+        borderRadius: 0,
+        scale: 1,
+      });
+      gsap.set(videoRef.current, { scale: 1 });
+      gsap.set(overlayRef.current, { opacity: 0.44 });
+      gsap.set(contentRef.current, { autoAlpha: 1 });
+      gsap.set([headingRef.current, bodyRef.current, buttonsRef.current], {
+        autoAlpha: 1,
+        y: 0,
+        clearProps: "transform",
+      });
+      gsap.set(heroButtons, {
+        autoAlpha: 1,
+        y: 0,
+        clearProps: "transform",
+      });
     });
 
-    const tl = gsap.timeline({
-      delay: 1.5,
+    mm.add(motionQueries.noPreference, () => {
+      const isMobile = window.matchMedia(motionQueries.mobile).matches;
+      const heroButtons = Array.from(
+        buttonsRef.current?.querySelectorAll<HTMLElement>("[data-hero-cta]") ?? []
+      );
+      const expandDuration = isMobile
+        ? motionTokens.durations.heroExpandMobile
+        : motionTokens.durations.heroExpandDesktop;
+
+      gsap.set(containerRef.current, {
+        width: isMobile ? "88%" : "76%",
+        height: isMobile ? "60%" : "64%",
+        borderRadius: isMobile ? 28 : 36,
+        scale: isMobile ? 0.94 : 0.88,
+      });
+      gsap.set(videoRef.current, { scale: isMobile ? 1.04 : 1.08 });
+      gsap.set(overlayRef.current, { opacity: isMobile ? 0.62 : 0.68 });
+      gsap.set(contentRef.current, { autoAlpha: 0 });
+      gsap.set(headingRef.current, {
+        autoAlpha: 0,
+        y: motionTokens.offsets.heroTitle,
+      });
+      gsap.set(bodyRef.current, {
+        autoAlpha: 0,
+        y: motionTokens.offsets.heroBody,
+      });
+      gsap.set(heroButtons, {
+        autoAlpha: 0,
+        y: motionTokens.offsets.heroCta,
+      });
+
+      const tl = gsap.timeline({
+        delay: 0.2,
+        defaults: { ease: motionTokens.ease.enter },
+      });
+
+      tl.to(containerRef.current, {
+        width: "100%",
+        height: "100%",
+        borderRadius: 0,
+        scale: 1,
+        duration: expandDuration,
+        ease: motionTokens.ease.morph,
+      })
+        .to(
+          videoRef.current,
+          {
+            scale: 1,
+            duration: expandDuration,
+            ease: motionTokens.ease.morph,
+          },
+          "<"
+        )
+        .to(
+          overlayRef.current,
+          {
+            opacity: 0.44,
+            duration: expandDuration,
+            ease: motionTokens.ease.morph,
+          },
+          "<"
+        )
+        .to(
+          contentRef.current,
+          {
+            autoAlpha: 1,
+            duration: motionTokens.durations.crossfade,
+            ease: motionTokens.ease.soft,
+          },
+          "<+=0.24"
+        )
+        .to(
+          headingRef.current,
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: motionTokens.durations.sectionBlock,
+            ease: motionTokens.ease.enter,
+          },
+          ">+=0.18"
+        )
+        .to(
+          bodyRef.current,
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: motionTokens.durations.sectionIntro,
+            ease: motionTokens.ease.enter,
+          },
+          "<+=0.18"
+        )
+        .to(
+          heroButtons,
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: motionTokens.durations.pills,
+            stagger: motionTokens.stagger.default,
+            ease: motionTokens.ease.enter,
+          },
+          "<+=0.18"
+        );
     });
 
-    tl.to(containerRef.current, {
-      width: "100%",
-      height: "100vh",
-      borderRadius: "0px",
-      scale: 1,
-      duration: 1.2,
-      ease: "power2.inOut",
-    });
-
-    tl.to(
-      contentRef.current,
-      {
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2.out",
-      },
-      "+=0.3"
-    );
-
-    tl.fromTo(
-      headingRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      "<"
-    );
-
-    tl.fromTo(
-      bodyRef.current,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-      "-=0.25"
-    );
-
-    tl.fromTo(
-      buttonsRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-      "-=0.3"
-    );
-  }, []);
+    return () => mm.revert();
+  }, { scope: sectionRef });
 
   return (
     <section
       ref={sectionRef}
       id="hero-trigger"
-      className="relative h-screen overflow-hidden"
+      className="relative h-[100svh] min-h-screen overflow-hidden"
     >
-      <div className="relative flex h-screen items-center justify-center bg-bg-light">
+      <div className="relative flex h-[100svh] min-h-screen items-center justify-center bg-bg-light">
         <div
           ref={containerRef}
-          className="video-container absolute overflow-hidden will-change-transform will-change-border-radius will-change-width will-change-height"
+          className="video-container absolute inset-0 m-auto overflow-hidden will-change-transform will-change-[border-radius,width,height]"
           style={{
-            width: "80%",
-            height: "80vh",
-            borderRadius: "40px",
-            scale: 0.9,
+            width: "78%",
+            height: "66%",
+            borderRadius: "36px",
+            transform: "scale(0.9)",
           }}
         >
           <video
@@ -122,7 +203,10 @@ const VideoHero = () => {
             Your browser does not support the video tag.
           </video>
 
-          <div className="absolute inset-0 bg-black/45 pointer-events-none" />
+          <div
+            ref={overlayRef}
+            className="absolute inset-0 bg-black/45 pointer-events-none"
+          />
         </div>
 
         <div
@@ -149,11 +233,15 @@ const VideoHero = () => {
               ref={buttonsRef}
               className="pointer-events-auto flex flex-wrap justify-center gap-4"
             >
-              <a href="#keahlian" className="btn-primary text-lg">
+              <a href="#keahlian" data-hero-cta className="btn-primary text-lg">
                 Jelajahi Kapabilitas
                 <ArrowRight size={20} />
               </a>
-              <a href="#company-profile" className="btn-border-white text-lg">
+              <a
+                href="#company-profile"
+                data-hero-cta
+                className="btn-border-white text-lg"
+              >
                 <PlayCircle size={20} />
                 Tonton Profil Perusahaan
               </a>

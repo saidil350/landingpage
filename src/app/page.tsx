@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import VideoHero from "@/components/VideoHero";
+import ScrollImageCollage from "@/components/ScrollImageCollage";
 import Footer from "@/components/Footer";
 import BrandPromise from "@/components/BrandPromise";
 import BusinessSolution from "@/components/BusinessSolution";
@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-bg-light">
       <Navbar />
-      <VideoHero />
+      <ScrollImageCollage />
       <BrandPromise />
       <CompanyProfileVideo />
       <KeahlianKami />

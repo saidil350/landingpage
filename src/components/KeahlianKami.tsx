@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import { Factory, ShieldCheck, Recycle, Zap, Globe, HeartHandshake } from "lucide-react";
+import { gsap, motionQueries, motionTokens } from "@/lib/gsap-client";
 
 const expertiseData = [
   {
@@ -43,76 +44,75 @@ const expertiseData = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 60,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-    },
-  },
-};
-
 const KeahlianKami = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add(motionQueries.noPreference, () => {
+      const introItems = Array.from(section.querySelectorAll<HTMLElement>("[data-expertise-intro]"));
+      const cards = Array.from(section.querySelectorAll<HTMLElement>("[data-expertise-card]"));
+
+      const tl = gsap.timeline({
+        defaults: { ease: motionTokens.ease.enter },
+        scrollTrigger: {
+          trigger: section,
+          start: "top 72%",
+          once: true,
+        },
+      });
+
+      tl.from(introItems, {
+        autoAlpha: 0,
+        y: motionTokens.offsets.intro,
+        duration: motionTokens.durations.sectionIntro,
+        stagger: motionTokens.stagger.default,
+      }).from(
+        cards,
+        {
+          autoAlpha: 0,
+          y: motionTokens.offsets.card,
+          duration: motionTokens.durations.sectionCard,
+          stagger: motionTokens.stagger.default,
+        },
+        "-=0.42"
+      );
+    });
+
+    return () => mm.revert();
+  }, { scope: sectionRef });
+
   return (
-    <section id="keahlian" className="section-padding bg-dark">
+    <section ref={sectionRef} id="keahlian" className="section-padding bg-dark">
       <div className="container-custom">
         <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
+          <div data-expertise-intro className="max-w-2xl">
             <h2 className="mb-6 text-white">
               Keahlian kami dibangun dari pengalaman operasional yang bisa diuji di lapangan.
             </h2>
             <p className="text-lg text-white/70">
               MRS menggabungkan kemampuan manufaktur, pengembangan material, quality assurance, dan dukungan distribusi untuk menghadirkan solusi kemasan yang relevan bagi berbagai sektor industri.
             </p>
-          </motion.div>
-          <motion.a
+          </div>
+          <a
             href="/layanan"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            data-expertise-intro
             className="inline-flex items-center justify-center rounded-btn border-2 border-white/20 px-8 py-3 font-medium text-white transition-all duration-300 hover:bg-white hover:text-dark"
           >
             Lihat Business Solutions
-          </motion.a>
+          </a>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-        >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {expertiseData.map((item, idx) => (
-            <motion.div
+            <div
               key={idx}
-              variants={cardVariants}
-              whileHover={{ y: -8 }}
-              className="group relative flex flex-col items-start border border-white/8 bg-white/4 p-8 transition-all duration-300 hover:border-white/12 hover:bg-white/6"
+              data-expertise-card
+              className="group relative flex flex-col items-start border border-white/8 bg-white/4 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/12 hover:bg-white/6"
             >
               <span className="absolute top-6 right-6 text-6xl font-bold tracking-tighter text-white/5">
                 {String(idx + 1).padStart(2, "0")}
@@ -128,9 +128,9 @@ const KeahlianKami = () => {
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/35">
                 Capability {String(idx + 1).padStart(2, "0")}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

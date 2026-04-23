@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
 import {
   Utensils,
   ShoppingBag,
@@ -14,6 +14,7 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 import { industries } from "@/data/industries";
+import { gsap, motionQueries, motionTokens } from "@/lib/gsap-client";
 
 const iconMap = {
   Utensils,
@@ -27,19 +28,94 @@ const iconMap = {
 };
 
 const BusinessSolution = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add(motionQueries.noPreference, () => {
+      const introItems = Array.from(section.querySelectorAll<HTMLElement>("[data-solution-intro]"));
+      const cards = Array.from(section.querySelectorAll<HTMLElement>("[data-solution-card]"));
+      const ctaLine = section.querySelector<HTMLElement>("[data-solution-cta-line]");
+      const ctaText = section.querySelector<HTMLElement>("[data-solution-cta-text]");
+      const ctaButton = section.querySelector<HTMLElement>("[data-solution-cta-button]");
+
+      const tl = gsap.timeline({
+        defaults: { ease: motionTokens.ease.enter },
+        scrollTrigger: {
+          trigger: section,
+          start: "top 72%",
+          once: true,
+        },
+      });
+
+      tl.from(introItems, {
+        autoAlpha: 0,
+        y: motionTokens.offsets.intro,
+        duration: motionTokens.durations.sectionIntro,
+        stagger: motionTokens.stagger.default,
+      }).from(
+        cards,
+        {
+          autoAlpha: 0,
+          y: motionTokens.offsets.card,
+          duration: motionTokens.durations.sectionCard,
+          stagger: motionTokens.stagger.default,
+        },
+        "-=0.42"
+      );
+
+      if (ctaLine && ctaText && ctaButton) {
+        tl.from(
+          ctaLine,
+          {
+            scaleX: 0,
+            transformOrigin: "center center",
+            duration: motionTokens.durations.pills,
+            ease: motionTokens.ease.soft,
+          },
+          "-=0.2"
+        )
+          .from(
+            ctaText,
+            {
+              autoAlpha: 0,
+              y: motionTokens.offsets.softCard,
+              duration: motionTokens.durations.crossfade,
+              ease: motionTokens.ease.enter,
+            },
+            "-=0.58"
+          )
+          .from(
+            ctaButton,
+            {
+              autoAlpha: 0,
+              y: motionTokens.offsets.pills,
+              duration: motionTokens.durations.pills,
+              ease: motionTokens.ease.enter,
+            },
+            "-=0.72"
+          );
+      }
+    });
+
+    return () => mm.revert();
+  }, { scope: sectionRef });
+
   return (
-    <section className="section-padding bg-bg-beige">
+    <section ref={sectionRef} className="section-padding bg-bg-beige">
       <div className="container-custom">
         <div className="mb-16 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-6"
-          >
+          <h2 data-solution-intro className="mb-6">
             Business solutions untuk kebutuhan industri yang berbeda, dengan standar eksekusi yang sama.
-          </motion.h2>
-          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-dark/90">
+          </h2>
+          <p
+            data-solution-intro
+            className="mx-auto max-w-3xl text-lg leading-relaxed text-dark/90"
+          >
             Kami membantu menerjemahkan kebutuhan fungsi, distribusi, dan kepatuhan industri ke dalam solusi
             kemasan yang lebih presisi dan siap dieksekusi.
           </p>
@@ -50,18 +126,10 @@ const BusinessSolution = () => {
             const IconComponent = iconMap[industry.icon as keyof typeof iconMap];
 
             return (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{
-                  scale: 1.03,
-                  y: -8,
-                  transition: { type: "spring", stiffness: 400, damping: 25 },
-                }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="group relative min-h-[340px] cursor-pointer overflow-hidden rounded-[28px] bg-white"
+                data-solution-card
+                className="group relative min-h-[340px] cursor-pointer overflow-hidden rounded-[28px] bg-white transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -97,24 +165,27 @@ const BusinessSolution = () => {
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <p className="mb-6 text-dark/90">
+        <div className="mt-16 text-center">
+          <div
+            data-solution-cta-line
+            className="mx-auto mb-6 h-px w-24 bg-dark/15"
+          />
+          <p data-solution-cta-text className="mb-6 text-dark/90">
             Butuh solusi yang lebih spesifik untuk proses, distribusi, atau kategori produk Anda?
           </p>
-          <Link href="/kontak" className="btn-primary card-hover-lift">
+          <Link
+            href="/kontak"
+            data-solution-cta-button
+            className="btn-primary card-hover-lift"
+          >
             Konsultasikan Sekarang
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -112,3 +112,13 @@ export interface NewsArticle {
   image: string;
   readTime: string;
 }
+
+// ==================== COMPANY PROFILE VIDEO ====================
+export interface CompanyProfileVideo {
+  title: string;
+  description: string;
+  duration: string;
+  poster: string;
+  videoUrl: string;
+  highlights: string[];
+}

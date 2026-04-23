@@ -16,91 +16,96 @@ const BrandPromise = () => {
   return (
     <section id="tentang" className="section-padding bg-white">
       <div className="container-custom">
-        {/* Vision Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20 max-w-4xl mx-auto"
-        >
-          <h2 className="mb-8">
-            Visi & <span className="text-primary italic">Misi</span>
-          </h2>
-          <div className="bg-bg-beige rounded-3xl p-10 card-hover-lift">
-            <h3 className="text-2xl font-semibold mb-6 text-secondary">Visi Kami</h3>
-            <p className="text-xl text-dark leading-relaxed italic font-medium">
-              "{brandPromise.vision}"
+        <div className="mb-16 grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-xl"
+          >
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-secondary/75">
+              Brand Promise
             </p>
-          </div>
-        </motion.div>
+            <h2 className="mb-5">
+              Nilai perusahaan kami diterjemahkan menjadi komitmen operasional yang bisa dirasakan mitra.
+            </h2>
+          </motion.div>
 
-        {/* Mission Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h3 className="text-center text-2xl font-semibold mb-10">Misi Kami</h3>
-          <div className="grid md:grid-cols-2 gap-7">
-            {brandPromise.mission.map((mission, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                whileHover={{ scale: 1.02 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex items-start gap-6 p-7 md:p-8 rounded-2xl bg-white border border-black/5 card-hover-lift"
-              >
-                <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-1">
-                  <div className="w-2 h-2 rounded-full bg-secondary" />
-                </div>
-                <p className="text-dark/90 leading-[1.85]">{mission}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="max-w-2xl text-lg leading-relaxed text-dark/78"
+          >
+            MRS tidak menempatkan nilai hanya sebagai pernyataan korporat. Kami menjadikannya dasar dalam
+            pengambilan keputusan, pengendalian mutu, dan cara membangun hubungan jangka panjang dengan klien.
+          </motion.p>
+        </div>
 
-        {/* Values Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-center text-2xl font-semibold mb-10">Nilai-Nilai Kami</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
-            {brandPromise.values.map((value, idx) => {
-              const IconComponent = iconMap[value.icon as keyof typeof iconMap];
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    y: -10,
-                    transition: { type: "spring", stiffness: 400, damping: 25 }
-                  }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-white p-9 rounded-2xl border border-black/5 shadow-sm hover:shadow-2xl hover:shadow-primary/10 text-center transition-shadow duration-300"
-                  style={{ 
-                    willChange: "transform",
-                    backfaceVisibility: "hidden",
-                    transform: "translateZ(0)"
-                  }}
-                >
-                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform group-hover:scale-110">
-                    {IconComponent && <IconComponent size={32} />}
+        <div className="mb-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-[32px] bg-bg-beige p-8 md:p-10"
+          >
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-secondary/75">
+              Visi
+            </p>
+            <p className="max-w-3xl text-2xl leading-relaxed text-dark md:text-3xl">
+              &ldquo;{brandPromise.vision}&rdquo;
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="rounded-[32px] bg-dark p-8 md:p-10 text-white"
+          >
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">
+              Nilai Inti
+            </p>
+            <div className="space-y-4">
+              {brandPromise.values.map((value) => {
+                const IconComponent = iconMap[value.icon as keyof typeof iconMap];
+
+                return (
+                  <div
+                    key={value.title}
+                    className="flex items-start gap-4 border-t border-white/10 pt-4 first:border-t-0 first:pt-0"
+                  >
+                    <span className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/8 text-primary">
+                      {IconComponent ? <IconComponent size={20} /> : null}
+                    </span>
+                    <div>
+                      <p className="font-semibold">{value.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-white/68">{value.description}</p>
+                    </div>
                   </div>
-                  <h4 className="text-lg font-semibold mb-4 text-dark">{value.title}</h4>
-                  <p className="text-dark/80 text-sm leading-relaxed">{value.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {brandPromise.mission.map((mission, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.06 }}
+              className="flex gap-4 rounded-[28px] border border-dark/8 bg-white p-7"
+            >
+              <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
+              <p className="leading-[1.8] text-dark/86">{mission}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

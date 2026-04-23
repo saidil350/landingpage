@@ -5,9 +5,9 @@ import BlogPostPage from "@/components/blog/BlogPostPage";
 import { blogPosts } from "@/data/blog-posts";
 
 interface BlogPostParams {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostParams) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     return {
@@ -38,8 +39,9 @@ export async function generateMetadata({ params }: BlogPostParams) {
   };
 }
 
-export default function BlogPost({ params }: BlogPostParams) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export default async function BlogPost({ params }: BlogPostParams) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();

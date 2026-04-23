@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const VideoHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const bodyRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,7 +39,6 @@ const VideoHero = () => {
   }, []);
 
   useGSAP(() => {
-    // Set initial state immediately
     gsap.set(containerRef.current, {
       width: "80%",
       height: "80vh",
@@ -46,22 +46,19 @@ const VideoHero = () => {
       scale: 0.9,
     });
 
-    // Automatic timeline - runs on load, not scroll
     const tl = gsap.timeline({
-      delay: 1.5, // Jeda 1.5 detik sebelum animasi mulai
+      delay: 1.5,
     });
 
-    // Step 1: Container expands from card to full screen (THE POP)
     tl.to(containerRef.current, {
       width: "100%",
       height: "100vh",
       borderRadius: "0px",
       scale: 1,
       duration: 1.2,
-      ease: "power2.inOut", // Smooth ease untuk otomatis animasi
+      ease: "power2.inOut",
     });
 
-    // Step 2: Content appears AFTER expansion completes
     tl.to(
       contentRef.current,
       {
@@ -69,22 +66,28 @@ const VideoHero = () => {
         duration: 0.5,
         ease: "power2.out",
       },
-      "+=0.3" // Small delay after expansion
+      "+=0.3"
     );
 
-    // Step 3: Entrance animations for headline and buttons
     tl.fromTo(
       headingRef.current,
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      "<" // Start at same time as content fade in
+      "<"
+    );
+
+    tl.fromTo(
+      bodyRef.current,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
+      "-=0.25"
     );
 
     tl.fromTo(
       buttonsRef.current,
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-      "-=0.3" // Slight overlap with heading
+      "-=0.3"
     );
   }, []);
 
@@ -94,12 +97,10 @@ const VideoHero = () => {
       id="hero-trigger"
       className="relative h-screen overflow-hidden"
     >
-      {/* Container for centered initial card */}
-      <div className="relative h-screen flex items-center justify-center bg-bg-light">
-        {/* Masking Container - Wraps video for the expand effect */}
+      <div className="relative flex h-screen items-center justify-center bg-bg-light">
         <div
           ref={containerRef}
-          className="video-container overflow-hidden will-change-transform will-change-border-radius will-change-width will-change-height absolute"
+          className="video-container absolute overflow-hidden will-change-transform will-change-border-radius will-change-width will-change-height"
           style={{
             width: "80%",
             height: "80vh",
@@ -107,7 +108,6 @@ const VideoHero = () => {
             scale: 0.9,
           }}
         >
-          {/* Video Element - Inside masking container */}
           <video
             ref={videoRef}
             autoPlay
@@ -116,50 +116,47 @@ const VideoHero = () => {
             playsInline
             preload="metadata"
             poster="/hero_background.png"
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
           >
             <source src="/hero-video-web.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
-          {/* Dark Overlay - Increased opacity (40%) for better text contrast */}
-          <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+          <div className="absolute inset-0 bg-black/45 pointer-events-none" />
         </div>
 
-        {/* Content Wrapper - Appears AFTER expansion */}
         <div
           ref={contentRef}
-          className="absolute inset-0 flex items-center justify-center opacity-0 will-change-opacity pointer-events-none"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 will-change-opacity"
         >
-          {/* Content */}
-          <div className="container-custom text-center px-4 pt-20">
+          <div className="container-custom px-4 pt-20 text-center">
             <h1
               ref={headingRef}
-              className="text-white mb-6 drop-shadow-lg"
+              className="mx-auto mb-6 max-w-5xl text-white drop-shadow-lg"
               style={{ textShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
             >
-              Solusi Kemasan Plastik Terpercaya
+              MRS membangun solusi kemasan plastik yang bertumpu pada kualitas, amanah, dan pertumbuhan jangka panjang.
             </h1>
             <p
-              ref={headingRef}
-              className="text-white/95 text-xl max-w-3xl mx-auto mb-12 drop-shadow-md"
+              ref={bodyRef}
+              className="mx-auto mb-12 max-w-3xl text-xl text-white/92 drop-shadow-md"
               style={{ textShadow: "0 2px 8px rgba(0,0,0,0.2)" }}
             >
-              Menjadi perusahaan industri kemasan plastik multi nasional dengan tetap memperhatikan prinsip-prinsip ajaran Islam
+              Menjadi perusahaan industri kemasan plastik multi nasional dengan tetap memperhatikan prinsip-prinsip ajaran Islam melalui manufaktur presisi, distribusi yang andal, dan kemitraan yang memberi nilai nyata.
             </p>
 
             <div
               ref={buttonsRef}
-              className="flex flex-wrap gap-4 justify-center pointer-events-auto"
+              className="pointer-events-auto flex flex-wrap justify-center gap-4"
             >
-              <button className="btn-primary text-lg">
-                Jelajahi Produk
+              <a href="#keahlian" className="btn-primary text-lg">
+                Jelajahi Kapabilitas
                 <ArrowRight size={20} />
-              </button>
-              <button className="btn-ghost text-lg text-white! hover:bg-white/10!">
+              </a>
+              <a href="#company-profile" className="btn-border-white text-lg">
                 <PlayCircle size={20} />
                 Tonton Profil Perusahaan
-              </button>
+              </a>
             </div>
           </div>
         </div>

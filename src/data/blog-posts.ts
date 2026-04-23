@@ -8,7 +8,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "MRS Plastic Packaging memperkenalkan solusi kemasan plastik yang dapat didaur ulang sepenuhnya, mendukung komitmen Indonesia terhadap lingkungan yang lebih baik.",
     date: "2025-03-15",
     category: "Inovasi",
-    image: "/images/blog/eco-packaging.jpg",
+    image: "/hero_background.png",
     readTime: "5 menit",
     content: `
       <p>Indonesia adalah salah satu kontributor terbesar sampah plastik di dunia. Menyadari tantangan ini, MRS Plastic Packaging berinovasi dengan mengembangkan solusi kemasan plastik yang ramah lingkungan tanpa mengorbankan kualitas.</p>
@@ -37,7 +37,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "Panduan lengkap untuk pemilik bisnis F&B dalam memilih kemasan plastik yang aman, higenis, dan menarik bagi konsumen.",
     date: "2025-03-10",
     category: "Tips",
-    image: "/images/blog/food-packaging-tips.jpg",
+    image: "/packaging.png",
     readTime: "4 menit",
     content: `
       <p>Memilih kemasan yang tepat adalah kunci sukses untuk bisnis makanan dan minuman. Kemasan tidak hanya melindungi produk, tetapi juga menjadi daya tarik visual bagi konsumen.</p>
@@ -67,7 +67,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "Perjalanan MRS Plastic Packaging dalam meraih sertifikasi ISO 9001:2015 dan bagaimana ini menguntungkan klien kami.",
     date: "2025-02-28",
     category: "Company News",
-    image: "/images/blog/iso-certification.jpg",
+    image: "/hero1.png",
     readTime: "6 menit",
     content: `
       <p>Pada tahun 2024, MRS Plastic Packaging berhasil meraih sertifikasi ISO 9001:2015, standar internasional untuk sistem manajemen mutu. Ini adalah bukti komitmen kami pada keunggulan operasional dan kepuasan pelanggan.</p>
@@ -99,7 +99,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "Pelajari tren terbaru dalam industrial packaging dan bagaimana MRS Plastic Packaging mengadopsi teknologi terkini untuk kebutuhan industri.",
     date: "2025-02-15",
     category: "Industri",
-    image: "/images/blog/industrial-packaging-2025.jpg",
+    image: "/rolls.png",
     readTime: "5 menit",
     content: `
       <p>Industri packaging terus berkembang dengan cepat. Tahun 2025 membawa berbagai inovasi yang mengubah cara kita berpikir tentang packaging industrial.</p>
@@ -132,7 +132,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "Keuntungan kemasan custom dan bagaimana MRS Plastic Packaging membantu brand Anda menonjol di pasar yang kompetitif.",
     date: "2025-02-01",
     category: "Industri",
-    image: "/images/blog/custom-packaging-branding.jpg",
+    image: "/packaging.png",
     readTime: "4 menit",
     content: `
       <p>Di pasar yang kompetitif, kemasan custom adalah salah satu cara paling efektif untuk membedakan brand Anda dari kompetitor. Mari kita lihat mengapa investasi dalam custom packaging sangat berharga.</p>
@@ -177,7 +177,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "MRS Plastic Packaging bangga memegang sertifikasi Halal MUI, memberikan ketenangan bagi konsumen Muslim Indonesia.",
     date: "2025-01-20",
     category: "Company News",
-    image: "/images/blog/halal-certification.jpg",
+    image: "/hero.png",
     readTime: "3 menit",
     content: `
       <p>Sebagai perusahaan yang beroperasi di Indonesia dengan mayoritas penduduk Muslim, sertifikasi Halal MUI adalah prioritas utama MRS Plastic Packaging.</p>
@@ -211,7 +211,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "Tips dan strategi menggunakan kemasan yang tepat untuk meningkatkan penjualan online dan customer satisfaction.",
     date: "2025-01-10",
     category: "Tips",
-    image: "/images/blog/ecommerce-packaging.jpg",
+    image: "/hero_background.png",
     readTime: "5 menit",
     content: `
       <p>Dengan pertumbuhan e-commerce yang pesat, kemasan menjadi faktor krusial dalam kesuksesan bisnis online. Packaging yang tepat dapat meningkatkan customer experience dan repeat orders.</p>
@@ -258,7 +258,7 @@ export const blogPosts: (NewsArticle & { slug: string; content: string })[] = [
     excerpt: "Ekspansi MRS dengan factory baru yang dilengkapi teknologi terbaru untuk memenuhi growing demand dari klien.",
     date: "2024-12-15",
     category: "Company News",
-    image: "/images/blog/new-factory.jpg",
+    image: "/hero1.png",
     readTime: "3 menit",
     content: `
       <p>MRS Plastic Packaging dengan bangga mengumumkan pembukaan factory baru di Cikarang, Jawa Barat. Investasi senilai Rp 25 miliar ini adalah bagian dari strategi ekspansi kami untuk melayani growing demand dari klien.</p>

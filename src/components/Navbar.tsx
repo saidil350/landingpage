@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -23,8 +22,6 @@ const Navigasi = () => {
 
   useEffect(() => {
     if (!isHomePage) {
-      // For non-home pages, set scrolled state to true immediately
-      setIsScrolled(true);
       return;
     }
 

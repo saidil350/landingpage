@@ -19,7 +19,7 @@ const Counter = ({ value, duration = 2 }: { value: number; duration?: number }) 
   useEffect(() => {
     if (isInView) {
       let startTime: number;
-      let startValue = 0;
+      const startValue = 0;
       const endValue = value;
 
       const animate = (currentTime: number) => {
@@ -83,7 +83,7 @@ const Statistik = () => {
           className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8"
         >
           <h3 className="text-3xl md:text-4xl text-white font-medium italic max-w-3xl leading-snug">
-            "Kami berkomitmen menyediakan solusi kemasan plastik berkualitas tinggi dengan menjunjung tinggi nilai-nilai Islam dalam setiap aspek operasional."
+            &ldquo;Kami berkomitmen menyediakan solusi kemasan plastik berkualitas tinggi dengan menjunjung tinggi nilai-nilai Islam dalam setiap aspek operasional.&rdquo;
           </h3>
           <div className="h-px w-24 bg-primary hidden lg:block" />
         </motion.div>

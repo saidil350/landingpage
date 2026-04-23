@@ -14,7 +14,6 @@ const iconMap = {
   Award,
 };
 
-// Animation variants for Framer Motion
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -42,9 +41,9 @@ const cardVariants = {
 
 const ProsesProduksi = () => {
   return (
-    <section id="produk" className="section-padding bg-bg-beige">
+    <section id="proses-produksi" className="section-padding bg-bg-beige">
       <div className="container-custom">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,13 +52,14 @@ const ProsesProduksi = () => {
             className="max-w-2xl"
           >
             <h2 className="mb-6">
-              Proses Produksi & <span className="text-secondary italic">Jaring Distribusi</span>
+              Proses produksi dan jaringan distribusi kami dirancang untuk menjaga keandalan skala industri.
             </h2>
             <p className="text-lg text-dark/90">
-              Kami menggabungkan teknologi manufaktur mutakhir dengan jaringan distribusi yang luas untuk menghadirkan solusi kemasan plastik berkualitas tinggi.
+              Dari riset material hingga pengiriman, setiap tahapan dirancang untuk memberi visibilitas, konsistensi kualitas, dan ketepatan eksekusi yang dibutuhkan klien B2B.
             </p>
           </motion.div>
-          <motion.button
+          <motion.a
+            href="/tentang-perusahaan"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -67,8 +67,8 @@ const ProsesProduksi = () => {
             whileTap={{ scale: 0.95 }}
             className="btn-secondary card-hover-lift"
           >
-            Lihat Semua Proses
-          </motion.button>
+            Lihat Profil Operasional
+          </motion.a>
         </div>
 
         <motion.div
@@ -76,7 +76,7 @@ const ProsesProduksi = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           {productionStages.map((item, idx) => {
             const IconComponent = iconMap[item.icon as keyof typeof iconMap];
@@ -87,33 +87,17 @@ const ProsesProduksi = () => {
                 whileHover={{ scale: 1.02 }}
                 className="card-premium card-hover-lift flex flex-col items-start group"
               >
-                <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 transition-transform group-hover:scale-110">
-                  {IconComponent && <IconComponent size={32} />}
+                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                  {IconComponent ? <IconComponent size={32} /> : null}
                 </div>
-                <h3 className="text-2xl font-semibold mb-4 leading-tight">
+                <h3 className="mb-4 text-2xl font-semibold leading-tight">
                   {item.titlePrimary} <br />
                   <span className="text-secondary">{item.titleSecondary}</span>
                 </h3>
-                <p className="text-dark/80 leading-relaxed mb-8 grow">
-                  {item.description}
+                <p className="mb-8 grow leading-relaxed text-dark/80">{item.description}</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-dark/45">
+                  Proof of reliability
                 </p>
-                <motion.button
-                  className="group flex items-center gap-2 text-sm font-bold text-dark hover:text-primary transition-colors"
-                  whileHover={{ x: 5 }}
-                >
-                  PELAJARI LEBIH LANJUT
-                  <motion.span
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="group-hover:text-secondary"
-                  >
-                    →
-                  </motion.span>
-                </motion.button>
               </motion.div>
             );
           })}

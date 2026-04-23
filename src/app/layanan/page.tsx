@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BusinessSolution from "@/components/BusinessSolution";
+import ProductGrid from "@/components/ProductGrid";
 
 export const metadata = {
   title: "Produk & Layanan - MRS Plastic Packaging",
@@ -11,7 +12,10 @@ export default function LayananPage() {
   return (
     <main className="min-h-screen bg-bg-light">
       <Navbar />
-      <BusinessSolution />
+      <div className="pt-20">
+        <BusinessSolution />
+        <ProductGrid />
+      </div>
       <Footer />
     </main>
   );

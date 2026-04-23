@@ -7,43 +7,42 @@ import { Factory, ShieldCheck, Recycle, Zap, Globe, HeartHandshake } from "lucid
 const expertiseData = [
   {
     icon: <Factory size={32} />,
-    titlePrimary: "Manufaktur",
-    titleSecondary: "Presisi",
-    description: "Fasilitas produksi modern dengan kontrol kualitas ketat untuk menghasilkan produk plastik tanpa cacat.",
+    titlePrimary: "Manufacturing",
+    titleSecondary: "Execution",
+    description: "Lini produksi yang dirancang untuk volume besar, stabilitas kualitas, dan disiplin proses pada setiap batch.",
   },
   {
     icon: <Recycle size={32} />,
     titlePrimary: "Material",
-    titleSecondary: "Eco-Friendly",
-    description: "Inovasi penggunaan biji plastik daur ulang dan material biodegradable untuk masa depan bumi.",
+    titleSecondary: "Development",
+    description: "Pendekatan formulasi material yang membantu klien menyeimbangkan performa, efisiensi, dan agenda keberlanjutan.",
   },
   {
     icon: <ShieldCheck size={32} />,
-    titlePrimary: "Standar",
-    titleSecondary: "Keamanan",
-    description: "Produk kami telah tersertifikasi Food Grade dan bebas dari zat berbahaya bagi kesehatan.",
+    titlePrimary: "Quality",
+    titleSecondary: "Assurance",
+    description: "Kontrol kualitas berlapis untuk memastikan spesifikasi, keamanan, dan konsistensi hasil tetap terjaga.",
   },
   {
     icon: <Zap size={32} />,
-    titlePrimary: "Produksi",
-    titleSecondary: "Cepat",
-    description: "Kapasitas produksi tinggi yang memungkinkan penyelesaian pesanan dalam waktu singkat.",
+    titlePrimary: "Lead Time",
+    titleSecondary: "Discipline",
+    description: "Sistem operasional yang membantu percepatan produksi tanpa mengorbankan akurasi dan mutu produk.",
   },
   {
     icon: <Globe size={32} />,
-    titlePrimary: "Jangkauan",
-    titleSecondary: "Global",
-    description: "Sistem logistik terintegrasi yang siap mengirimkan produk kemasan ke seluruh penjuru dunia.",
+    titlePrimary: "Distribution",
+    titleSecondary: "Readiness",
+    description: "Koordinasi logistik yang mendukung kebutuhan pengiriman nasional dan ritme suplai industri yang dinamis.",
   },
   {
     icon: <HeartHandshake size={32} />,
-    titlePrimary: "Layanan",
-    titleSecondary: "Kustom",
-    description: "Konsultasi desain dan spesifikasi khusus yang disesuaikan dengan kebutuhan unik merek Anda.",
+    titlePrimary: "Partnership",
+    titleSecondary: "Approach",
+    description: "Pendampingan komersial dan teknis agar solusi kemasan yang dipilih relevan dengan kebutuhan bisnis klien.",
   },
 ];
 
-// Animation variants for Framer Motion
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -73,7 +72,7 @@ const KeahlianKami = () => {
   return (
     <section id="keahlian" className="section-padding bg-dark">
       <div className="container-custom">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,22 +81,23 @@ const KeahlianKami = () => {
             className="max-w-2xl"
           >
             <h2 className="mb-6 text-white">
-              Keahlian kami dalam <span className="text-primary italic">inovasi</span> kemasan
+              Keahlian kami dibangun dari pengalaman operasional yang bisa diuji di lapangan.
             </h2>
             <p className="text-lg text-white/70">
-              Kami menggabungkan teknologi mutakhir dengan pengalaman operasional mendalam untuk menghadirkan solusi kemasan plastik yang berkualitas tinggi dan andal.
+              MRS menggabungkan kemampuan manufaktur, pengembangan material, quality assurance, dan dukungan distribusi untuk menghadirkan solusi kemasan yang relevan bagi berbagai sektor industri.
             </p>
           </motion.div>
-          <motion.button
+          <motion.a
+            href="/layanan"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center justify-center border-2 border-white/20 text-white font-medium transition-all duration-300 hover:bg-white hover:text-dark px-8 py-3 rounded-btn"
+            className="inline-flex items-center justify-center rounded-btn border-2 border-white/20 px-8 py-3 font-medium text-white transition-all duration-300 hover:bg-white hover:text-dark"
           >
-            Lihat Semua Layanan
-          </motion.button>
+            Lihat Business Solutions
+          </motion.a>
         </div>
 
         <motion.div
@@ -105,47 +105,29 @@ const KeahlianKami = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {expertiseData.map((item, idx) => (
             <motion.div
               key={idx}
               variants={cardVariants}
               whileHover={{ y: -8 }}
-              className="relative bg-white/4 border border-white/8 p-8 flex flex-col items-start group transition-all duration-300 hover:bg-white/6 hover:border-white/12"
+              className="group relative flex flex-col items-start border border-white/8 bg-white/4 p-8 transition-all duration-300 hover:border-white/12 hover:bg-white/6"
             >
-              <span className="absolute top-6 right-6 text-6xl font-bold text-white/5 tracking-tighter">
-                {String(idx + 1).padStart(2, '0')}
+              <span className="absolute top-6 right-6 text-6xl font-bold tracking-tighter text-white/5">
+                {String(idx + 1).padStart(2, "0")}
               </span>
-              <div className="w-16 h-16 bg-white/5 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-8 transition-transform group-hover:scale-110 group-hover:bg-white/10">
-                <div className="text-primary">
-                  {item.icon}
-                </div>
+              <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 text-primary transition-transform group-hover:scale-110 group-hover:bg-white/10">
+                {item.icon}
               </div>
-              <h3 className="text-2xl font-semibold mb-4 leading-tight text-white">
+              <h3 className="mb-4 text-2xl font-semibold leading-tight text-white">
                 {item.titlePrimary} <br />
                 <span className="text-secondary">{item.titleSecondary}</span>
               </h3>
-              <p className="text-white/60 leading-relaxed mb-8 grow">
-                {item.description}
+              <p className="mb-8 grow leading-relaxed text-white/60">{item.description}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/35">
+                Capability {String(idx + 1).padStart(2, "0")}
               </p>
-              <motion.button
-                className="group flex items-center gap-2 text-sm font-bold text-white/80 hover:text-primary transition-colors"
-                whileHover={{ x: 5 }}
-              >
-                PELAJARI LEBIH LANJUT
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="group-hover:text-primary"
-                >
-                  →
-                </motion.span>
-              </motion.button>
             </motion.div>
           ))}
         </motion.div>

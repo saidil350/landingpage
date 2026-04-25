@@ -9,7 +9,7 @@ const AjakanAksi = () => {
   const { headline, description, channels, officeHours, sampleLead } = contactDummyData;
 
   return (
-    <section className="section-padding bg-dark relative overflow-hidden">
+    <section className="section-padding bg-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0 ring-1 ring-white/10 bg-pattern-grid" style={{ backgroundSize: "60px 60px" }} />
       </div>
@@ -23,12 +23,12 @@ const AjakanAksi = () => {
           className="grid lg:grid-cols-2 gap-10"
         >
           <div>
-            <h2 className="text-white mb-6 text-4xl md:text-5xl leading-tight">{headline}</h2>
-            <p className="text-lg text-white/90 mb-8 max-w-xl">{description}</p>
+            <h2 className="text-neutral-900 mb-6 text-4xl md:text-5xl leading-tight">{headline}</h2>
+            <p className="text-lg text-neutral-900/90 mb-8 max-w-xl">{description}</p>
 
             <div className="space-y-4 mb-10">
               {channels.map((item, index) => (
-                <div key={item.label} className="bg-white/10 border border-white/15 rounded-2xl p-5">
+                <div key={item.label} className="bg-neutral-100 border border-neutral-200 rounded-2xl p-5">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-primary shrink-0">
                       {index === 0 && <Phone size={20} />}
@@ -36,20 +36,20 @@ const AjakanAksi = () => {
                       {index === 2 && <MapPin size={20} />}
                     </div>
                     <div>
-                      <p className="text-white/70 text-sm uppercase tracking-wider">{item.label}</p>
-                      <p className="text-white text-lg font-semibold">{item.value}</p>
-                      <p className="text-white/75 text-sm mt-1">{item.note}</p>
+                      <p className="text-neutral-600 text-sm uppercase tracking-wider">{item.label}</p>
+                      <p className="text-neutral-900 text-lg font-semibold">{item.value}</p>
+                      <p className="text-neutral-600 text-sm mt-1">{item.note}</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
-              <p className="text-white text-lg font-semibold mb-3">Jam Operasional (Dummy)</p>
+            <div className="bg-neutral-50 border border-neutral-200 rounded-2xl p-5">
+              <p className="text-neutral-900 text-lg font-semibold mb-3">Jam Operasional (Dummy)</p>
               <div className="space-y-2">
                 {officeHours.map((item) => (
-                  <div key={item.day} className="flex items-center justify-between text-sm text-white/85">
+                  <div key={item.day} className="flex items-center justify-between text-sm text-neutral-900/85">
                     <span>{item.day}</span>
                     <span>{item.hours}</span>
                   </div>

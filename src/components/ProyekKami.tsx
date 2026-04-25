@@ -66,22 +66,22 @@ const ProyekKami = () => {
 
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
                 <div className="mb-4">
-                  <span className="px-3 py-1 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-primary text-neutral-900 text-[10px] font-bold uppercase tracking-wider">
                     {project.status}
                   </span>
                 </div>
-                <h3 className="text-white text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-neutral-900 text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <div className="flex justify-between items-end border-t border-white/20 pt-4 mt-2">
+                <div className="flex justify-between items-end border-t border-neutral-200 pt-4 mt-2">
                   <div>
-                    <p className="text-white/60 text-xs uppercase font-medium">{project.location}</p>
-                    <p className="text-white font-bold">{project.capacity}</p>
+                    <p className="text-neutral-500 text-xs uppercase font-medium">{project.location}</p>
+                    <p className="text-neutral-900 font-bold">{project.capacity}</p>
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white backdrop-blur-md group-hover:bg-primary transition-all"
+                    className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-900 backdrop-blur-md group-hover:bg-primary transition-all"
                   >
                     <ExternalLink size={18} />
                   </motion.button>

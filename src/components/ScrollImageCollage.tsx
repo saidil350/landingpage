@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap-client";
+import { ArrowRight, PlayCircle } from "lucide-react";
 
 type CollageImage = {
   id: string;
@@ -27,86 +28,79 @@ type CardLayout = {
 
 const COLLAGE_IMAGES: CollageImage[] = [
   {
-    id: "energy-1",
-    src: "/images/energy-1.jpg",
+    id: "kolase-1",
+    src: "/images/kolase-1.jpg",
     alt: "Wind turbines and solar fields glowing in soft sunrise light",
     objectPosition: "64% center",
   },
   {
-    id: "energy-2",
-    src: "/images/energy-2.jpg",
+    id: "kolase-2",
+    src: "/images/kolase-2.jpg",
     alt: "Expansive solar array with a clean access road and coastal hills",
     objectPosition: "56% center",
   },
   {
-    id: "energy-3",
-    src: "/images/energy-3.jpg",
-    alt: "Aerial renewable energy campus stretching across a wide horizon",
-    objectPosition: "42% center",
-  },
-  {
-    id: "energy-4",
-    src: "/images/energy-4.jpg",
+    id: "kolase-4",
+    src: "/images/kolase-4.jpg",
     alt: "Close-up hillside solar panels framed by two tall wind turbines",
     objectPosition: "48% center",
   },
   {
-    id: "energy-5",
-    src: "/images/energy-5.jpg",
+    id: "kolase-5",
+    src: "/images/kolase-5.jpg",
     alt: "Desert wind farm rising behind reflective solar panel rows",
     objectPosition: "62% center",
   },
 ];
 
-const INTRO_IMAGE_IDS = ["energy-1", "energy-2", "energy-3"];
-const SUPPORT_CARD_IDS = ["energy-4", "energy-1", "energy-5", "energy-2"];
+const SUPPORT_CARD_IDS = ["kolase-4", "kolase-1", "kolase-5", "kolase-2"];
 
 const getCardLayouts = (preset: LayoutPreset): CardLayout[] => {
   if (preset === "tablet") {
     return [
       {
-        x: -84,
-        y: -70,
-        scale: 1,
-        rotation: -3,
+        x: -5,
+        y: -90,
+        scale: 1.05,
+        rotation: -2,
         visible: true,
-        entryX: -132,
-        entryY: -108,
+        entryX: -10,
+        entryY: -130,
         entryScale: 1.15,
-        entryRotation: -5,
-      },
-      {
-        x: -110,
-        y: -2,
-        scale: 0.76,
-        rotation: -1.5,
-        visible: true,
-        entryX: -172,
-        entryY: 54,
-        entryScale: 0.96,
         entryRotation: -4,
       },
       {
-        x: 116,
-        y: -28,
-        scale: 0.8,
-        rotation: 2,
+        x: -120,
+        y: -10,
+        scale: 0.85,
+        rotation: -5,
         visible: true,
-        entryX: 182,
-        entryY: -42,
-        entryScale: 1.08,
+        entryX: -160,
+        entryY: -30,
+        entryScale: 0.95,
+        entryRotation: -7,
+      },
+      {
+        x: 110,
+        y: 5,
+        scale: 0.9,
+        rotation: 4,
+        visible: true,
+        entryX: 150,
+        entryY: -10,
+        entryScale: 1.0,
         entryRotation: 6,
       },
       {
-        x: 84,
-        y: 14,
-        scale: 0.84,
-        rotation: 2.5,
+        x: -40,
+        y: 80,
+        scale: 0.9,
+        rotation: 3,
         visible: true,
-        entryX: 144,
-        entryY: 108,
-        entryScale: 1.07,
-        entryRotation: 6,
+        entryX: -60,
+        entryY: 120,
+        entryScale: 1.0,
+        entryRotation: 5,
       },
     ];
   }
@@ -114,47 +108,47 @@ const getCardLayouts = (preset: LayoutPreset): CardLayout[] => {
   if (preset === "mobile") {
     return [
       {
-        x: -42,
-        y: -74,
-        scale: 0.86,
+        x: -5,
+        y: -65,
+        scale: 0.95,
         rotation: -2,
         visible: true,
-        entryX: -72,
-        entryY: -112,
-        entryScale: 1.08,
-        entryRotation: -4,
+        entryX: -10,
+        entryY: -95,
+        entryScale: 1.05,
+        entryRotation: -3,
       },
       {
-        x: -100,
-        y: 24,
-        scale: 0.78,
-        rotation: -1,
-        visible: false,
-        entryX: -132,
-        entryY: 46,
-        entryScale: 0.96,
-        entryRotation: -2,
+        x: -80,
+        y: -5,
+        scale: 0.8,
+        rotation: -4,
+        visible: true,
+        entryX: -110,
+        entryY: -15,
+        entryScale: 0.9,
+        entryRotation: -5,
       },
       {
-        x: 108,
-        y: -4,
-        scale: 0.82,
-        rotation: 2,
-        visible: false,
-        entryX: 144,
-        entryY: -36,
-        entryScale: 1.02,
+        x: 75,
+        y: 5,
+        scale: 0.8,
+        rotation: 3,
+        visible: true,
+        entryX: 100,
+        entryY: -5,
+        entryScale: 0.9,
         entryRotation: 4,
       },
       {
-        x: 52,
-        y: 18,
-        scale: 0.8,
+        x: -25,
+        y: 55,
+        scale: 0.85,
         rotation: 2,
         visible: true,
-        entryX: 96,
-        entryY: 96,
-        entryScale: 1.05,
+        entryX: -35,
+        entryY: 80,
+        entryScale: 0.95,
         entryRotation: 4,
       },
     ];
@@ -162,61 +156,53 @@ const getCardLayouts = (preset: LayoutPreset): CardLayout[] => {
 
   return [
     {
-      x: -110,
-      y: -92,
-      scale: 1.03,
-      rotation: -4,
-      visible: true,
-      entryX: -168,
-      entryY: -126,
-      entryScale: 1.18,
-      entryRotation: -6,
-    },
-    {
-      x: -150,
-      y: -12,
-      scale: 0.78,
+      x: -10,
+      y: -130,
+      scale: 1.15,
       rotation: -2,
       visible: true,
-      entryX: -230,
-      entryY: 56,
-      entryScale: 0.98,
-      entryRotation: -5,
+      entryX: -20,
+      entryY: -190,
+      entryScale: 1.25,
+      entryRotation: -4,
     },
     {
-      x: 145,
-      y: -30,
-      scale: 0.82,
-      rotation: 2,
+      x: -160,
+      y: -20,
+      scale: 0.9,
+      rotation: -6,
+      visible: true,
+      entryX: -220,
+      entryY: -50,
+      entryScale: 1.0,
+      entryRotation: -8,
+    },
+    {
+      x: 160,
+      y: 10,
+      scale: 1.0,
+      rotation: 4,
       visible: true,
       entryX: 230,
-      entryY: -42,
-      entryScale: 1.08,
+      entryY: -10,
+      entryScale: 1.1,
       entryRotation: 6,
     },
     {
-      x: 105,
-      y: 12,
-      scale: 0.86,
+      x: -60,
+      y: 110,
+      scale: 0.95,
       rotation: 3,
       visible: true,
-      entryX: 168,
-      entryY: 118,
-      entryScale: 1.08,
-      entryRotation: 6,
+      entryX: -90,
+      entryY: 170,
+      entryScale: 1.05,
+      entryRotation: 5,
     },
   ];
 };
 
-const introImages = INTRO_IMAGE_IDS.map((id) => {
-  const image = COLLAGE_IMAGES.find((item) => item.id === id);
 
-  if (!image) {
-    throw new Error(`Missing collage image for intro layer: ${id}`);
-  }
-
-  return image;
-});
 
 const supportCards = SUPPORT_CARD_IDS.map((id) => {
   const image = COLLAGE_IMAGES.find((item) => item.id === id);
@@ -229,10 +215,10 @@ const supportCards = SUPPORT_CARD_IDS.map((id) => {
 });
 
 const supportCardClassNames = [
-  "w-[clamp(210px,24vw,320px)] aspect-[4/5] z-10 motion-reduce:-translate-x-[42px] motion-reduce:-translate-y-[56px] motion-reduce:scale-[0.9] motion-reduce:-rotate-[2deg] md:motion-reduce:-translate-x-[84px] md:motion-reduce:-translate-y-[48px] md:motion-reduce:scale-[1.03] md:motion-reduce:-rotate-[3deg] lg:motion-reduce:-translate-x-[110px] lg:motion-reduce:-translate-y-[60px] lg:motion-reduce:scale-[1.08] lg:motion-reduce:-rotate-[4deg]",
-  "hidden md:block md:w-[clamp(150px,18vw,220px)] md:aspect-[4/5] md:z-20 md:motion-reduce:-translate-x-[110px] md:motion-reduce:translate-y-[20px] md:motion-reduce:scale-[0.78] md:motion-reduce:-rotate-[1.5deg] lg:motion-reduce:-translate-x-[150px] lg:motion-reduce:translate-y-[25px] lg:motion-reduce:scale-[0.82] lg:motion-reduce:-rotate-[2deg]",
-  "hidden md:block md:w-[clamp(150px,16vw,210px)] md:aspect-[3/5] md:z-20 md:motion-reduce:translate-x-[116px] md:motion-reduce:-translate-y-[2px] md:motion-reduce:scale-[0.82] md:motion-reduce:rotate-[2deg] lg:motion-reduce:translate-x-[145px] lg:motion-reduce:-translate-y-[5px] lg:motion-reduce:scale-[0.86] lg:motion-reduce:rotate-[2deg]",
-  "w-[clamp(176px,20vw,256px)] aspect-[4/5] z-30 motion-reduce:translate-x-[52px] motion-reduce:translate-y-[48px] motion-reduce:scale-[0.84] motion-reduce:rotate-[2deg] md:motion-reduce:translate-x-[84px] md:motion-reduce:translate-y-[46px] md:motion-reduce:scale-[0.88] md:motion-reduce:rotate-[2.5deg] lg:motion-reduce:translate-x-[105px] lg:motion-reduce:translate-y-[55px] lg:motion-reduce:scale-[0.92] lg:motion-reduce:rotate-[3deg]",
+  "w-[clamp(180px,26vw,340px)] aspect-[4/3] z-10 motion-reduce:-translate-y-[65px] motion-reduce:scale-[0.9] md:motion-reduce:-translate-y-[90px] md:motion-reduce:scale-[1] lg:motion-reduce:-translate-y-[130px] lg:motion-reduce:scale-[1.15]",
+  "w-[clamp(140px,20vw,260px)] aspect-[3/4] z-20 motion-reduce:-translate-x-[80px] md:motion-reduce:-translate-x-[120px] lg:motion-reduce:-translate-x-[160px]",
+  "w-[clamp(150px,22vw,280px)] aspect-[3/4] z-20 motion-reduce:translate-x-[75px] md:motion-reduce:translate-x-[110px] lg:motion-reduce:translate-x-[160px]",
+  "w-[clamp(160px,20vw,240px)] aspect-[4/5] z-50 motion-reduce:-translate-x-[20px] motion-reduce:translate-y-[55px] md:motion-reduce:-translate-x-[35px] md:motion-reduce:translate-y-[80px] lg:motion-reduce:-translate-x-[50px] lg:motion-reduce:translate-y-[110px]",
 ];
 
 function getHeroScale(card: HTMLDivElement, stage: HTMLDivElement) {
@@ -249,9 +235,14 @@ export default function ScrollImageCollage() {
   const stickyRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const collageWrapRef = useRef<HTMLDivElement>(null);
+  const parallaxMainRef = useRef<HTMLDivElement>(null);
+  const parallaxCardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const mainCardRef = useRef<HTMLDivElement>(null);
   const heroLayerRefs = useRef<Array<HTMLDivElement | null>>([]);
   const supportCardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const heroTextRef = useRef<HTMLDivElement>(null);
+  const wordSliderRef = useRef<HTMLDivElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -267,7 +258,7 @@ export default function ScrollImageCollage() {
     const heroLayers = heroLayerRefs.current.filter(Boolean) as HTMLDivElement[];
     const supportCardElements = supportCardRefs.current.filter(Boolean) as HTMLDivElement[];
 
-    if (heroLayers.length !== introImages.length || supportCardElements.length !== supportCards.length) {
+    if (heroLayers.length < 1 || supportCardElements.length !== supportCards.length) {
       return;
     }
 
@@ -278,8 +269,8 @@ export default function ScrollImageCollage() {
       if (prefersReducedMotion) {
         gsap.set(collageWrap, { clearProps: "transform,opacity" });
         gsap.set(mainCard, { clearProps: "transform" });
-        gsap.set(heroLayers, { clearProps: "transform", opacity: 0 });
-        gsap.set(heroLayers[2], { opacity: 1 });
+        gsap.set(heroLayers, { clearProps: "transform,opacity" });
+        if (heroTextRef.current) gsap.set(heroTextRef.current, { clearProps: "transform,opacity" });
         return;
       }
 
@@ -298,31 +289,26 @@ export default function ScrollImageCollage() {
           gsap.set(mainCard, {
             scale: heroScale,
             transformOrigin: "50% 50%",
-            force3D: true,
+            force3D: false,
           });
 
           gsap.set(heroLayers, {
             transformOrigin: "50% 50%",
-            force3D: true,
+            force3D: false,
           });
 
           gsap.set(heroLayers[0], {
             opacity: 1,
-            scale: 1.12,
-            yPercent: -4,
+            scale: 1.08,
+            yPercent: 0,
           });
 
-          gsap.set(heroLayers[1], {
-            opacity: 0,
-            scale: 1.17,
-            yPercent: 6,
-          });
-
-          gsap.set(heroLayers[2], {
-            opacity: 0,
-            scale: 1.1,
-            yPercent: 5,
-          });
+          if (heroTextRef.current) {
+            gsap.set(heroTextRef.current, {
+              opacity: 1,
+              y: 0,
+            });
+          }
 
           supportCardRefs.current.forEach((card, index) => {
             const layout = layouts[index];
@@ -374,64 +360,31 @@ export default function ScrollImageCollage() {
           },
         });
 
-        // Intro sequence: premium crossfades with gentle zoom and depth drift.
+        // Keep the main visual stable and focused before revealing the collage.
         timeline
-          .addLabel("introA")
+          .addLabel("intro")
           .to(
             heroLayers[0],
             {
-              scale: 1.02,
-              yPercent: 3,
-              duration: 0.9,
+              scale: 1.01,
+              yPercent: -1,
+              duration: 1.12,
             },
-            "introA"
-          )
-          .to(
-            heroLayers[0],
-            {
-              opacity: 0,
-              duration: 0.72,
-            },
-            "introA+=0.42"
-          )
-          .to(
-            heroLayers[1],
-            {
-              opacity: 1,
-              scale: 1.02,
-              yPercent: 0,
-              duration: 0.98,
-            },
-            "introA+=0.08"
-          )
-          .addLabel("introB", ">-0.08")
-          .to(
-            heroLayers[1],
-            {
-              scale: 0.99,
-              yPercent: -4,
-              duration: 0.86,
-            },
-            "introB"
-          )
-          .to(
-            heroLayers[1],
-            {
-              opacity: 0,
-              duration: 0.72,
-            },
-            "introB+=0.36"
-          )
-          .to(
-            heroLayers[2],
-            {
-              opacity: 1,
-              scale: 1,
-              yPercent: 0,
-              duration: 0.98,
-            },
-            "introB+=0.04"
+            "intro"
           );
+
+        if (heroTextRef.current) {
+          timeline.to(
+            heroTextRef.current,
+            {
+              opacity: 0,
+              y: -40,
+              duration: 0.6,
+              ease: "power2.inOut",
+            },
+            "intro+=0.2"
+          );
+        }
 
         // Shrink the oversized hero into the final rounded center card.
         timeline
@@ -446,7 +399,7 @@ export default function ScrollImageCollage() {
             "shrink"
           )
           .to(
-            heroLayers[2],
+            heroLayers[0],
             {
               scale: 1.02,
               yPercent: -2,
@@ -505,7 +458,123 @@ export default function ScrollImageCollage() {
       mm.add("(min-width: 1024px)", () => createSequence("desktop"));
       mm.add("(min-width: 768px) and (max-width: 1023px)", () => createSequence("tablet"));
       mm.add("(max-width: 767px)", () => createSequence("mobile"));
+
+      const isHoverable = window.matchMedia("(hover: hover)").matches;
+      let idleAnimation: gsap.core.Tween | null = null;
+
+      const handlePointerMove = (e: PointerEvent) => {
+        if (prefersReducedMotion) return;
+        
+        // Kalkulasi kursor (-1 hingga 1) berdasarkan layar
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        
+        // Kartu Utama (kedalaman menengah)
+        if (parallaxMainRef.current) {
+          gsap.to(parallaxMainRef.current, {
+            x: x * 20,
+            y: y * 20,
+            rotationX: -y * 6,
+            rotationY: x * 6,
+            scale: 1.02,
+            ease: "power3.out",
+            duration: 0.8,
+            transformPerspective: 1000,
+          });
+        }
+
+        // Kartu Pendukung
+        parallaxCardRefs.current.forEach((card, index) => {
+          if (!card) return;
+          
+          // Semua bergerak searah, tetapi kedalaman (depth) berbeda.
+          // Kartu dengan index besar (z-index depan) bergerak lebih banyak.
+          const depth = 10 + (index * 8); 
+          
+          gsap.to(card, {
+            x: x * depth,
+            y: y * depth,
+            rotationX: -y * (3 + index),
+            rotationY: x * (3 + index),
+            ease: "power3.out",
+            duration: 0.8 + (index * 0.05),
+            transformPerspective: 1000,
+          });
+        });
+      };
+
+      const handlePointerLeave = () => {
+        if (prefersReducedMotion) return;
+        
+        // Kembalikan semua ke posisi awal secara lembut
+        const allCards = [parallaxMainRef.current, ...parallaxCardRefs.current].filter(Boolean) as HTMLElement[];
+        
+        gsap.to(allCards, {
+          x: 0,
+          y: 0,
+          rotationX: 0,
+          rotationY: 0,
+          scale: 1,
+          ease: "power3.out",
+          duration: 1.2,
+        });
+      };
+
+      if (isHoverable) {
+        section.addEventListener("pointermove", handlePointerMove);
+        section.addEventListener("pointerleave", handlePointerLeave);
+      } else {
+        // Efek idle floating untuk perangkat touch (mobile)
+        const allCards = [parallaxMainRef.current, ...parallaxCardRefs.current].filter(Boolean) as HTMLElement[];
+        idleAnimation = gsap.to(allCards, {
+          y: "-=10",
+          rotationZ: "0.5",
+          duration: 3,
+          yoyo: true,
+          repeat: -1,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.2,
+            from: "random"
+          }
+        });
+      }
+
+      return () => {
+        if (isHoverable) {
+          section.removeEventListener("pointermove", handlePointerMove);
+          section.removeEventListener("pointerleave", handlePointerLeave);
+        }
+        if (idleAnimation) {
+          idleAnimation.kill();
+        }
+      };
     }, section);
+
+    // Word Slider Animation
+    if (wordSliderRef.current) {
+      const words = wordSliderRef.current.children;
+      const totalItems = words.length;
+
+      const wordTl = gsap.timeline({ repeat: -1 });
+
+      for (let i = 0; i < totalItems - 1; i++) {
+        wordTl.to(wordSliderRef.current, {
+          yPercent: -(i + 1) * (100 / totalItems),
+          duration: 0.8,
+          ease: "power3.inOut",
+          delay: 2,
+        });
+      }
+
+      // Instant reset for seamless loop
+      wordTl.set(wordSliderRef.current, { yPercent: 0 });
+      
+      // Cleanup for this specific timeline
+      ctx.add(() => {
+        wordTl.kill();
+      });
+    }
 
     return () => {
       mm.revert();
@@ -537,68 +606,107 @@ export default function ScrollImageCollage() {
                     key={`${image.id}-${index}`}
                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                   >
-                    <div
-                      ref={(element) => {
-                        supportCardRefs.current[index] = element;
-                      }}
-                      className={`relative overflow-hidden rounded-card bg-[#e7ece9] ring-1 ring-black/4 shadow-[0_26px_80px_-38px_rgba(15,67,56,0.35)] motion-safe:opacity-0 motion-reduce:opacity-100 ${supportCardClassNames[index]}`}
-                      style={{ willChange: "transform, opacity" }}
-                    >
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        sizes="(max-width: 767px) 48vw, (max-width: 1023px) 26vw, 22vw"
-                        className="object-cover"
-                        style={{ objectPosition: image.objectPosition }}
-                      />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,20,18,0.14)_0%,rgba(8,20,18,0.02)_42%,rgba(255,255,255,0.08)_100%)]" />
+                    <div ref={(el) => { parallaxCardRefs.current[index] = el; }}>
+                      <div
+                        ref={(element) => {
+                          supportCardRefs.current[index] = element;
+                        }}
+                        className={`relative overflow-hidden rounded-card bg-[#e7ece9] ring-1 ring-black/4 shadow-[0_26px_80px_-38px_rgba(15,67,56,0.35)] motion-safe:opacity-0 motion-reduce:opacity-100 ${supportCardClassNames[index]}`}
+                        style={{ willChange: "transform, opacity" }}
+                      >
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          sizes="(max-width: 767px) 48vw, (max-width: 1023px) 26vw, 22vw"
+                          className="object-cover"
+                          style={{ objectPosition: image.objectPosition }}
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,20,18,0.14)_0%,rgba(8,20,18,0.02)_42%,rgba(255,255,255,0.08)_100%)]" />
+                      </div>
                     </div>
                   </div>
                 ))}
 
                 <div className="absolute left-1/2 top-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
-                  <div
-                    ref={mainCardRef}
-                    className="relative aspect-4/5 w-[clamp(260px,28vw,380px)] overflow-hidden rounded-card bg-[#ecf1ee] ring-1 ring-black/4 shadow-[0_34px_90px_-42px_rgba(15,67,56,0.36)] motion-safe:scale-[3.3] motion-reduce:scale-100"
-                    style={{ willChange: "transform, opacity" }}
+                  <div ref={parallaxMainRef}>
+                    <div
+                      ref={mainCardRef}
+                    className="relative aspect-square w-[clamp(260px,28vw,380px)] overflow-hidden rounded-card bg-[#ecf1ee] ring-1 ring-black/4 shadow-[0_34px_90px_-42px_rgba(15,67,56,0.36)] motion-safe:scale-[3.3] motion-reduce:scale-100"
                   >
-                    {introImages.map((image, index) => {
-                      const opacityClassName =
-                        index === 0
-                          ? "opacity-100 motion-reduce:opacity-0"
-                          : index === 2
-                            ? "opacity-0 motion-reduce:opacity-100"
-                            : "opacity-0";
-
-                      return (
-                        <div
-                          key={image.id}
-                          ref={(element) => {
-                            heroLayerRefs.current[index] = element;
-                          }}
-                          className={`absolute inset-0 ${opacityClassName}`}
-                          style={{ willChange: "transform, opacity" }}
-                        >
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            priority={index === 0}
-                            sizes="(max-width: 767px) 86vw, (max-width: 1023px) 46vw, 32vw"
-                            className="object-cover"
-                            style={{ objectPosition: image.objectPosition }}
-                          />
-                          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,17,0.42)_0%,rgba(7,18,17,0.16)_24%,rgba(255,255,255,0.10)_100%)]" />
-                        </div>
-                      );
-                    })}
+                    <div
+                      ref={(element) => {
+                        heroLayerRefs.current[0] = element;
+                      }}
+                      className="absolute inset-0 opacity-100"
+                    >
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="h-full w-full object-cover"
+                        style={{ width: '100%', maxWidth: '1280px', maxHeight: '720px' }}
+                      >
+                        <source src={'/plastic.mp4'} type="video/mp4" />
+                      </video>
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,18,17,0.42)_0%,rgba(7,18,17,0.16)_24%,rgba(255,255,255,0.10)_100%)]" />
+                    </div>
+                  </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Cinematic Hero Text Overlay */}
+          <div
+            ref={heroTextRef}
+            className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center pt-20"
+          >
+            <div className="container-custom px-4 text-center">
+              <div
+                className="mx-auto mb-10 flex flex-col items-center text-white drop-shadow-lg tracking-tight"
+                style={{ textShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
+              >
+                <span className="text-5xl md:text-7xl lg:text-8xl font-bold mb-3 tracking-wide">MRS</span>
+                <span className="text-3xl md:text-5xl lg:text-6xl font-medium mb-6 text-white/95">Solusi Kemasan Plastik</span>
+                
+                <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 text-3xl md:text-5xl lg:text-6xl mb-6 font-light">
+                  <span>yang</span>
+                  <div className="relative h-[1.3em] overflow-hidden min-w-[200px] md:min-w-[340px] rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md shadow-inner">
+                    <div ref={wordSliderRef} className="absolute top-0 left-0 w-full flex flex-col">
+                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Amanah</span>
+                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Andal</span>
+                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Siap Bertumbuh</span>
+                      {/* Clone for loop */}
+                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Amanah</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <span className="text-2xl md:text-4xl lg:text-5xl font-light mt-2 text-white/90">Bersama Industri</span>
+              </div>
+
+              <div
+                ref={buttonsRef}
+                className="pointer-events-auto flex flex-wrap justify-center gap-4"
+              >
+                <a href="#keahlian" className="btn-primary text-lg">
+                  Jelajahi Kapabilitas
+                  <ArrowRight size={20} />
+                </a>
+                <a
+                  href="#company-profile"
+                  className="btn-primary text-lg"
+                >
+                  <PlayCircle size={20} />
+                  Profile Perusahaan
+                </a>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>

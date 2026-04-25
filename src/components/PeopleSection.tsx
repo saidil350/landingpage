@@ -24,7 +24,7 @@ const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
 
 export default function PeopleSection() {
   return (
-    <section id="people" className="section-padding bg-dark text-white">
+    <section id="people" className="section-padding bg-white text-neutral-900">
       <div className="container-custom">
         <div className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <motion.div
@@ -33,19 +33,19 @@ export default function PeopleSection() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">
               Our People
             </p>
-            <h2 className="mb-5 text-white">
+            <h2 className="mb-5 text-neutral-900">
               Di balik kapasitas produksi, ada tim yang menjaga mutu, amanah, dan kemitraan jangka panjang.
             </h2>
-            <p className="text-lg leading-relaxed text-white/72">
+            <p className="text-lg leading-relaxed text-neutral-600">
               Kami ingin kehadiran tim terlihat jelas di website karena kepercayaan pada perusahaan juga lahir
               dari orang-orang yang memimpin kualitas, operasional, dan hubungan dengan mitra.
             </p>
           </motion.div>
 
-          <Link href="/tentang-perusahaan" className="btn-border-white">
+          <Link href="/tentang-perusahaan" className="btn-primary">
             Lihat Profil Perusahaan
             <ArrowRight size={18} />
           </Link>
@@ -59,7 +59,7 @@ export default function PeopleSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: index * 0.08 }}
-              className="overflow-hidden rounded-[28px] border border-white/10 bg-white/4"
+              className="overflow-hidden rounded-[28px] border border-neutral-200 bg-neutral-50"
             >
               <div className="aspect-[4/4.5] overflow-hidden">
                 <img
@@ -72,19 +72,19 @@ export default function PeopleSection() {
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-2xl font-semibold">{member.name}</h3>
-                    <p className="mt-1 text-sm uppercase tracking-[0.18em] text-white/55">
+                    <p className="mt-1 text-sm uppercase tracking-[0.18em] text-neutral-500">
                       {member.position}
                     </p>
                   </div>
                   <a
                     href={member.linkedin}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-white/75 transition-colors hover:border-primary hover:text-primary"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition-colors hover:border-primary hover:text-primary"
                     aria-label={`LinkedIn ${member.name}`}
                   >
                     <LinkedinIcon size={16} />
                   </a>
                 </div>
-                <p className="text-white/72 leading-relaxed">{member.bio}</p>
+                <p className="text-neutral-600 leading-relaxed">{member.bio}</p>
               </div>
             </motion.article>
           ))}

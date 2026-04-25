@@ -53,7 +53,7 @@ export default function OrderingProcess() {
                 className="flex flex-col items-center text-center"
               >
                 <div className="w-20 h-20 bg-white border-4 border-background rounded-full flex items-center justify-center text-primary shadow-lg mb-8 group hover:border-primary transition-all relative">
-                    <div className="absolute -top-2 -left-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm">
+                    <div className="absolute -top-2 -left-2 w-8 h-8 bg-primary text-neutral-900 rounded-full flex items-center justify-center font-bold text-sm">
                         {i + 1}
                     </div>
                   {step.icon}

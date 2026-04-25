@@ -61,7 +61,7 @@ const Navigasi = () => {
           <span
             ref={logoTextRef}
             className={`text-2xl font-semibold tracking-tight transition-colors duration-300 ${
-              !isHomePage || isScrolled ? "text-[#1F1E1E]" : "text-white"
+              !isHomePage || isScrolled ? "text-[#1F1E1E]" : "text-neutral-900"
             }`}
           >
             MRS
@@ -77,7 +77,7 @@ const Navigasi = () => {
               className={`font-medium transition-colors text-sm uppercase tracking-wider ${
                 !isHomePage || isScrolled
                   ? "text-[#1F1E1E]/80 hover:text-primary"
-                  : "text-white/90 hover:text-primary"
+                  : "text-neutral-900/90 hover:text-primary"
               }`}
             >
               {link.name}
@@ -96,7 +96,7 @@ const Navigasi = () => {
         {/* Mobile Toggle */}
         <button
           className={`md:hidden p-2 transition-colors duration-300 ${
-            !isHomePage || isScrolled ? "text-[#1F1E1E]" : "text-white"
+            !isHomePage || isScrolled ? "text-[#1F1E1E]" : "text-neutral-900"
           }`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"

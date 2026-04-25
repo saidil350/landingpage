@@ -87,21 +87,21 @@ const KeahlianKami = () => {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="keahlian" className="section-padding bg-dark">
+    <section ref={sectionRef} id="keahlian" className="section-padding bg-white">
       <div className="container-custom">
         <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
           <div data-expertise-intro className="max-w-2xl">
-            <h2 className="mb-6 text-white">
+            <h2 className="mb-6 text-neutral-900">
               Keahlian kami dibangun dari pengalaman operasional yang bisa diuji di lapangan.
             </h2>
-            <p className="text-lg text-white/70">
+            <p className="text-lg text-neutral-600">
               MRS menggabungkan kemampuan manufaktur, pengembangan material, quality assurance, dan dukungan distribusi untuk menghadirkan solusi kemasan yang relevan bagi berbagai sektor industri.
             </p>
           </div>
           <a
             href="/layanan"
             data-expertise-intro
-            className="inline-flex items-center justify-center rounded-btn border-2 border-white/20 px-8 py-3 font-medium text-white transition-all duration-300 hover:bg-white hover:text-dark"
+            className="inline-flex items-center justify-center rounded-btn border-2 border-neutral-200 px-8 py-3 font-medium text-neutral-900 transition-all duration-300 hover:bg-white hover:text-dark"
           >
             Lihat Business Solutions
           </a>
@@ -112,20 +112,20 @@ const KeahlianKami = () => {
             <div
               key={idx}
               data-expertise-card
-              className="group relative flex flex-col items-start border border-white/8 bg-white/4 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-white/12 hover:bg-white/6"
+              className="group relative flex flex-col items-start border border-white/8 bg-neutral-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-neutral-200 hover:bg-white/6"
             >
-              <span className="absolute top-6 right-6 text-6xl font-bold tracking-tighter text-white/5">
+              <span className="absolute top-6 right-6 text-6xl font-bold tracking-tighter text-neutral-900/5">
                 {String(idx + 1).padStart(2, "0")}
               </span>
-              <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 text-primary transition-transform group-hover:scale-110 group-hover:bg-white/10">
+              <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-50 text-primary transition-transform group-hover:scale-110 group-hover:bg-neutral-100">
                 {item.icon}
               </div>
-              <h3 className="mb-4 text-2xl font-semibold leading-tight text-white">
+              <h3 className="mb-4 text-2xl font-semibold leading-tight text-neutral-900">
                 {item.titlePrimary} <br />
                 <span className="text-secondary">{item.titleSecondary}</span>
               </h3>
-              <p className="mb-8 grow leading-relaxed text-white/60">{item.description}</p>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/35">
+              <p className="mb-8 grow leading-relaxed text-neutral-500">{item.description}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-900/35">
                 Capability {String(idx + 1).padStart(2, "0")}
               </p>
             </div>

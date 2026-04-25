@@ -48,9 +48,9 @@ const Sertifikasi = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileHover={{ opacity: 1, y: 0 }}
-                  className="absolute inset-0 flex items-center justify-center bg-dark/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 >
-                  <button className="btn-primary bg-white! text-dark! hover:bg-primary! hover:text-white!">
+                  <button className="btn-primary bg-white! text-dark! hover:bg-primary! hover:text-neutral-900!">
                     <Download size={20} />
                     Download
                   </button>

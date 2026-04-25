@@ -99,7 +99,7 @@ export default function InnovationSection() {
               <div
                 key={item.title}
                 data-innovation-card
-                className="flex h-full flex-col justify-between rounded-[28px] bg-bg-beige p-8"
+                className="flex h-full flex-col justify-between rounded-card bg-bg-beige p-8"
               >
                 <div>
                   <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-white">

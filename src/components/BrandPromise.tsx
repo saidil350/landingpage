@@ -110,8 +110,8 @@ const BrandPromise = () => {
             </p>
           </div>
 
-          <div data-brand-card className="rounded-[32px] bg-dark p-8 md:p-10 text-white">
-            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">
+          <div data-brand-card className="rounded-[32px] bg-white p-8 md:p-10 text-neutral-900">
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">
               Nilai Inti
             </p>
             <div className="space-y-4">
@@ -122,14 +122,14 @@ const BrandPromise = () => {
                   <div
                     key={value.title}
                     data-brand-value
-                    className="flex items-start gap-4 border-t border-white/10 pt-4 first:border-t-0 first:pt-0"
+                    className="flex items-start gap-4 border-t border-neutral-200 pt-4 first:border-t-0 first:pt-0"
                   >
                     <span className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/8 text-primary">
                       {IconComponent ? <IconComponent size={20} /> : null}
                     </span>
                     <div>
                       <p className="font-semibold">{value.title}</p>
-                      <p className="mt-1 text-sm leading-relaxed text-white/68">{value.description}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-neutral-900/68">{value.description}</p>
                     </div>
                   </div>
                 );
@@ -143,7 +143,7 @@ const BrandPromise = () => {
             <div
               key={idx}
               data-brand-mission
-              className="flex gap-4 rounded-[28px] border border-dark/8 bg-white p-7"
+              className="flex gap-4 rounded-card border border-dark/8 bg-white p-7"
             >
               <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
               <p className="leading-[1.8] text-dark/86">{mission}</p>

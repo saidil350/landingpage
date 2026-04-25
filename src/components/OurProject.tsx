@@ -46,31 +46,31 @@ const OurProject = () => {
                   {project.tags.map((tag, tagIdx) => (
                     <span
                       key={tagIdx}
-                      className="rounded-full bg-secondary/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm"
+                      className="rounded-full bg-secondary/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-neutral-900 backdrop-blur-sm"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="mb-2 text-2xl font-bold text-white transition-colors group-hover:text-primary">
+                <h3 className="mb-2 text-2xl font-bold text-neutral-900 transition-colors group-hover:text-primary">
                   {project.title}
                 </h3>
 
-                <p className="mb-1 text-sm text-white/80">{project.client}</p>
-                <p className="mb-4 text-xs font-medium uppercase text-white/60">
+                <p className="mb-1 text-sm text-neutral-900/80">{project.client}</p>
+                <p className="mb-4 text-xs font-medium uppercase text-neutral-500">
                   {project.industry} • {project.year}
                 </p>
 
-                <div className="mt-2 flex items-end justify-between border-t border-white/20 pt-4">
+                <div className="mt-2 flex items-end justify-between border-t border-neutral-200 pt-4">
                   <div>
-                    <p className="text-xs font-medium uppercase text-white/60">Kapasitas</p>
-                    <p className="font-bold text-white">{project.capacity}</p>
+                    <p className="text-xs font-medium uppercase text-neutral-500">Kapasitas</p>
+                    <p className="font-bold text-neutral-900">{project.capacity}</p>
                   </div>
                   <motion.span
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all group-hover:bg-primary"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900 backdrop-blur-md transition-all group-hover:bg-primary"
                   >
                     <ExternalLink size={18} />
                   </motion.span>

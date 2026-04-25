@@ -7,8 +7,8 @@ import { gsap, motionQueries, motionTokens } from "@/lib/gsap-client";
 
 const VideoHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const bodyRef = useRef<HTMLParagraphElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const wordSliderRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,7 +53,7 @@ const VideoHero = () => {
       gsap.set(videoRef.current, { scale: 1 });
       gsap.set(overlayRef.current, { opacity: 0.44 });
       gsap.set(contentRef.current, { autoAlpha: 1 });
-      gsap.set([headingRef.current, bodyRef.current, buttonsRef.current], {
+      gsap.set([headingRef.current, buttonsRef.current], {
         autoAlpha: 1,
         y: 0,
         clearProps: "transform",
@@ -86,10 +86,6 @@ const VideoHero = () => {
       gsap.set(headingRef.current, {
         autoAlpha: 0,
         y: motionTokens.offsets.heroTitle,
-      });
-      gsap.set(bodyRef.current, {
-        autoAlpha: 0,
-        y: motionTokens.offsets.heroBody,
       });
       gsap.set(heroButtons, {
         autoAlpha: 0,
@@ -147,16 +143,6 @@ const VideoHero = () => {
           ">+=0.18"
         )
         .to(
-          bodyRef.current,
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: motionTokens.durations.sectionIntro,
-            ease: motionTokens.ease.enter,
-          },
-          "<+=0.18"
-        )
-        .to(
           heroButtons,
           {
             autoAlpha: 1,
@@ -169,6 +155,26 @@ const VideoHero = () => {
         );
     });
 
+    // Word Slider Animation
+    if (wordSliderRef.current) {
+      const words = wordSliderRef.current.children;
+      const totalItems = words.length;
+
+      const wordTl = gsap.timeline({ repeat: -1 });
+
+      for (let i = 0; i < totalItems - 1; i++) {
+        wordTl.to(wordSliderRef.current, {
+          yPercent: -(i + 1) * (100 / totalItems),
+          duration: 0.8,
+          ease: "power3.inOut",
+          delay: 2,
+        });
+      }
+
+      // Instant reset for seamless loop
+      wordTl.set(wordSliderRef.current, { yPercent: 0 });
+    }
+
     return () => mm.revert();
   }, { scope: sectionRef });
 
@@ -176,12 +182,12 @@ const VideoHero = () => {
     <section
       ref={sectionRef}
       id="hero-trigger"
-      className="relative h-[100svh] min-h-screen overflow-hidden"
+      className="relative h-svh min-h-screen overflow-hidden"
     >
-      <div className="relative flex h-[100svh] min-h-screen items-center justify-center bg-bg-light">
+      <div className="relative flex h-svh min-h-screen items-center justify-center bg-bg-light">
         <div
           ref={containerRef}
-          className="video-container absolute inset-0 m-auto overflow-hidden will-change-transform will-change-[border-radius,width,height]"
+          className="video-container absolute inset-0 m-auto overflow-hidden will-change-[transform,border-radius,width,height]"
           style={{
             width: "78%",
             height: "66%",
@@ -199,7 +205,7 @@ const VideoHero = () => {
             poster="/hero_background.png"
             className="h-full w-full object-cover"
           >
-            <source src="/hero-video-web.mp4" type="video/mp4" />
+            <source src="/plastic.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
@@ -214,20 +220,29 @@ const VideoHero = () => {
           className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 will-change-opacity"
         >
           <div className="container-custom px-4 pt-20 text-center">
-            <h1
+            <div
               ref={headingRef}
-              className="mx-auto mb-6 max-w-5xl text-white drop-shadow-lg"
+              className="mx-auto mb-10 flex flex-col items-center text-white drop-shadow-lg tracking-tight"
               style={{ textShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
             >
-              MRS membangun solusi kemasan plastik yang bertumpu pada kualitas, amanah, dan pertumbuhan jangka panjang.
-            </h1>
-            <p
-              ref={bodyRef}
-              className="mx-auto mb-12 max-w-3xl text-xl text-white/92 drop-shadow-md"
-              style={{ textShadow: "0 2px 8px rgba(0,0,0,0.2)" }}
-            >
-              Menjadi perusahaan industri kemasan plastik multi nasional dengan tetap memperhatikan prinsip-prinsip ajaran Islam melalui manufaktur presisi, distribusi yang andal, dan kemitraan yang memberi nilai nyata.
-            </p>
+              <span className="text-5xl md:text-7xl lg:text-8xl font-bold mb-3 tracking-wide">MRS</span>
+              <span className="text-3xl md:text-5xl lg:text-6xl font-medium mb-6 text-white/95">Solusi Kemasan Plastik</span>
+              
+              <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 text-3xl md:text-5xl lg:text-6xl mb-6 font-light">
+                <span>yang</span>
+                <div className="relative h-[1.3em] overflow-hidden min-w-[200px] md:min-w-[340px] rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md shadow-inner">
+                  <div ref={wordSliderRef} className="absolute top-0 left-0 w-full flex flex-col">
+                    <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Amanah</span>
+                    <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Andal</span>
+                    <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Siap Bertumbuh</span>
+                    {/* Clone for loop */}
+                    <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Amanah</span>
+                  </div>
+                </div>
+              </div>
+              
+              <span className="text-2xl md:text-4xl lg:text-5xl font-light mt-2 text-white/90">Bersama Industri</span>
+            </div>
 
             <div
               ref={buttonsRef}
@@ -240,7 +255,7 @@ const VideoHero = () => {
               <a
                 href="#company-profile"
                 data-hero-cta
-                className="btn-border-white text-lg"
+                className="btn-primary text-lg"
               >
                 <PlayCircle size={20} />
                 Tonton Profil Perusahaan

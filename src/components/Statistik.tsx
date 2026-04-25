@@ -44,7 +44,7 @@ const Counter = ({ value, duration = 2 }: { value: number; duration?: number }) 
 
 const Statistik = () => {
   return (
-    <section className="section-padding bg-secondary text-white overflow-hidden relative">
+    <section className="section-padding bg-secondary text-neutral-900 overflow-hidden relative">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-white opacity-[0.02] transform translate-x-1/2 -skew-x-12" />
 
@@ -66,9 +66,9 @@ const Statistik = () => {
                 <span className="text-6xl md:text-7xl font-bold group-hover:text-primary transition-colors">
                   <Counter value={stat.value} />
                 </span>
-                <span className="text-2xl font-light text-white/80">{stat.unit}</span>
+                <span className="text-2xl font-light text-neutral-900/80">{stat.unit}</span>
               </div>
-              <p className="text-sm font-bold tracking-[0.2em] text-white/60 uppercase">
+              <p className="text-sm font-bold tracking-[0.2em] text-neutral-500 uppercase">
                 {stat.label}
               </p>
             </motion.div>
@@ -80,9 +80,9 @@ const Statistik = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-24 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8"
+          className="mt-24 pt-12 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center gap-8"
         >
-          <h3 className="text-3xl md:text-4xl text-white font-medium italic max-w-3xl leading-snug">
+          <h3 className="text-3xl md:text-4xl text-neutral-900 font-medium italic max-w-3xl leading-snug">
             &ldquo;Kami berkomitmen menyediakan solusi kemasan plastik berkualitas tinggi dengan menjunjung tinggi nilai-nilai Islam dalam setiap aspek operasional.&rdquo;
           </h3>
           <div className="h-px w-24 bg-primary hidden lg:block" />

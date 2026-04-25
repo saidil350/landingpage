@@ -141,18 +141,18 @@ export default function LocationSection() {
         <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <div
             data-location-lead
-            className="overflow-hidden rounded-[32px] bg-dark text-white"
+            className="overflow-hidden rounded-[32px] bg-white text-neutral-900"
           >
             <div className="grid min-h-full gap-0 md:grid-cols-2">
               <div className="flex flex-col justify-between p-8 md:p-10">
                 <div>
-                  <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">
+                  <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500">
                     Operational Footprint
                   </p>
                   <h3 className="mb-5 text-3xl font-semibold leading-tight">
                     Tiga titik utama yang menopang ritme bisnis kami.
                   </h3>
-                  <p className="max-w-md text-white/72 leading-relaxed">
+                  <p className="max-w-md text-neutral-600 leading-relaxed">
                     Kantor komersial, fasilitas manufaktur, dan node distribusi ini bekerja sebagai satu sistem
                     untuk menjaga lead time dan kualitas layanan.
                   </p>
@@ -164,7 +164,7 @@ export default function LocationSection() {
                       <p className="text-2xl font-semibold text-primary">
                         {String(index + 1).padStart(2, "0")}
                       </p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-white/48">
+                      <p className="mt-2 text-xs uppercase tracking-[0.18em] text-neutral-900/48">
                         {location.type}
                       </p>
                     </div>
@@ -218,7 +218,7 @@ export default function LocationSection() {
               >
                 <div className="mb-4 flex items-center gap-3">
                   <span
-                    className={`flex h-11 w-11 items-center justify-center rounded-2xl text-white transition-colors duration-300 ${
+                    className={`flex h-11 w-11 items-center justify-center rounded-2xl text-neutral-900 transition-colors duration-300 ${
                       activeIndex === index ? "bg-primary" : "bg-secondary"
                     }`}
                   >

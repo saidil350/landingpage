@@ -47,7 +47,7 @@ export default function MosaicGrid() {
               }
             }
           }}
-          className="grid grid-cols-2 gap-0 bg-dark"
+          className="grid grid-cols-2 gap-0 bg-white"
         >
 
           {/* Cell 1 - Photo */}
@@ -80,13 +80,13 @@ export default function MosaicGrid() {
               visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
             }}
             whileHover={{ backgroundColor: "rgba(255,255,255,0.08)" }}
-            className="relative flex flex-col justify-center p-8 md:p-10 bg-white/4 border border-white/8 transition-colors"
+            className="relative flex flex-col justify-center p-8 md:p-10 bg-neutral-50 border border-white/8 transition-colors"
           >
-            <span className="absolute top-6 right-6 text-5xl font-bold text-white/10 tracking-tighter">01</span>
-            <h3 className="text-white mb-3 font-semibold text-xl relative z-10">
+            <span className="absolute top-6 right-6 text-5xl font-bold text-neutral-900/10 tracking-tighter">01</span>
+            <h3 className="text-neutral-900 mb-3 font-semibold text-xl relative z-10">
               Stok Selalu Tersedia
             </h3>
-            <p className="text-white/60 text-sm leading-relaxed relative z-10">
+            <p className="text-neutral-500 text-sm leading-relaxed relative z-10">
               Gudang raksasa dengan sistem inventaris terintegrasi
             </p>
           </motion.div>
@@ -98,13 +98,13 @@ export default function MosaicGrid() {
               visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
             }}
             whileHover={{ backgroundColor: "rgba(255,255,255,0.08)" }}
-            className="relative flex flex-col justify-center p-8 md:p-10 bg-white/4 border border-white/8 transition-colors"
+            className="relative flex flex-col justify-center p-8 md:p-10 bg-neutral-50 border border-white/8 transition-colors"
           >
-            <span className="absolute top-6 right-6 text-5xl font-bold text-white/10 tracking-tighter">02</span>
-            <h3 className="text-white mb-3 font-semibold text-xl relative z-10">
+            <span className="absolute top-6 right-6 text-5xl font-bold text-neutral-900/10 tracking-tighter">02</span>
+            <h3 className="text-neutral-900 mb-3 font-semibold text-xl relative z-10">
               Layanan 24 Jam
             </h3>
-            <p className="text-white/60 text-sm leading-relaxed relative z-10">
+            <p className="text-neutral-500 text-sm leading-relaxed relative z-10">
               Armada mandiri beroperasi 24/7 untuk pengiriman tepat waktu
             </p>
           </motion.div>
@@ -162,13 +162,13 @@ export default function MosaicGrid() {
               visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
             }}
             whileHover={{ backgroundColor: "rgba(255,255,255,0.08)" }}
-            className="relative flex flex-col justify-center p-8 md:p-10 bg-white/4 border border-white/8 transition-colors"
+            className="relative flex flex-col justify-center p-8 md:p-10 bg-neutral-50 border border-white/8 transition-colors"
           >
-            <span className="absolute top-6 right-6 text-5xl font-bold text-white/10 tracking-tighter">03</span>
-            <h3 className="text-white mb-3 font-semibold text-xl relative z-10">
+            <span className="absolute top-6 right-6 text-5xl font-bold text-neutral-900/10 tracking-tighter">03</span>
+            <h3 className="text-neutral-900 mb-3 font-semibold text-xl relative z-10">
               Konsultasi B2B
             </h3>
-            <p className="text-white/60 text-sm leading-relaxed relative z-10">
+            <p className="text-neutral-500 text-sm leading-relaxed relative z-10">
               Bantuan ahli pemilihan material untuk produksi massal
             </p>
           </motion.div>

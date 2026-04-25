@@ -39,7 +39,7 @@ export default function RootLayout({
       className="h-full antialiased scroll-smooth"
       data-scroll-behavior="smooth"
     >
-      <body className="min-h-full font-sans bg-bg-light text-foreground selection:bg-primary/30">
+      <body suppressHydrationWarning className="min-h-full font-sans bg-bg-light text-foreground selection:bg-primary/30">
         {children}
       </body>
     </html>

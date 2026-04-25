@@ -117,41 +117,41 @@ export default function CompanyProfileVideo() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="company-profile" className="section-padding bg-dark text-white">
+    <section ref={sectionRef} id="company-profile" className="section-padding bg-white text-neutral-900">
       <div className="container-custom grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div className="max-w-xl">
           <p
             data-company-intro
-            className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55"
+            className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-neutral-500"
           >
             Company Profile Video
           </p>
-          <h2 data-company-intro className="mb-5 text-white">
+          <h2 data-company-intro className="mb-5 text-neutral-900">
             Melihat lebih dekat cara MRS membangun kualitas dari hulu ke hilir.
           </h2>
-          <p data-company-intro className="mb-8 text-lg leading-relaxed text-white/75">
+          <p data-company-intro className="mb-8 text-lg leading-relaxed text-neutral-600">
             {companyProfileVideo.description}
           </p>
 
-          <div className="mb-10 space-y-4 border-l border-white/15 pl-5">
+          <div className="mb-10 space-y-4 border-l border-neutral-200 pl-5">
             {companyProfileVideo.highlights.map((item) => (
               <div key={item} data-company-highlight className="flex gap-3">
                 <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary" />
-                <p className="text-white/78">{item}</p>
+                <p className="text-neutral-700">{item}</p>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-600">
             <span
               data-company-pill
-              className="rounded-full border border-white/15 px-4 py-2"
+              className="rounded-full border border-neutral-200 px-4 py-2"
             >
               Durasi {companyProfileVideo.duration}
             </span>
             <span
               data-company-pill
-              className="rounded-full border border-white/15 px-4 py-2"
+              className="rounded-full border border-neutral-200 px-4 py-2"
             >
               Manufacturing, quality, distribution
             </span>
@@ -174,10 +174,10 @@ export default function CompanyProfileVideo() {
 
           <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
             <div className="flex items-start justify-between gap-4">
-              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm backdrop-blur-sm">
+              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
                 {companyProfileVideo.title}
               </span>
-              <span className="rounded-full border border-white/20 bg-black/25 px-4 py-2 text-sm backdrop-blur-sm">
+              <span className="rounded-full border border-white/20 bg-black/25 px-4 py-2 text-sm text-white backdrop-blur-sm">
                 {companyProfileVideo.duration}
               </span>
             </div>
@@ -187,7 +187,7 @@ export default function CompanyProfileVideo() {
                 <p className="mb-2 text-sm font-semibold uppercase tracking-[0.24em] text-white/60">
                   Watch Overview
                 </p>
-                <p className="text-xl font-semibold leading-tight md:text-2xl">
+                <p className="text-xl font-semibold leading-tight text-white md:text-2xl">
                   Proses produksi, jaringan distribusi, dan budaya kerja yang menopang pertumbuhan MRS.
                 </p>
               </div>
@@ -206,14 +206,14 @@ export default function CompanyProfileVideo() {
             <div
               key={item.label}
               data-company-metric
-              className="rounded-[24px] border border-white/10 bg-white/5 px-6 py-5 backdrop-blur-sm"
+              className="rounded-[24px] border border-neutral-200 bg-neutral-50 px-6 py-5 backdrop-blur-sm"
             >
               <div className="mb-2 flex items-end gap-2">
                 <span
                   ref={(node) => {
                     metricRefs.current[index] = node;
                   }}
-                  className="text-4xl font-semibold text-white md:text-5xl"
+                  className="text-4xl font-semibold text-neutral-900 md:text-5xl"
                 >
                   {formatMetricValue(item.value)}
                 </span>
@@ -221,7 +221,7 @@ export default function CompanyProfileVideo() {
                   {item.unit}
                 </span>
               </div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/60">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
                 {item.label}
               </p>
             </div>

@@ -129,7 +129,7 @@ const BusinessSolution = () => {
               <div
                 key={idx}
                 data-solution-card
-                className="group relative min-h-[340px] cursor-pointer overflow-hidden rounded-[28px] bg-white transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]"
+                className="group relative min-h-[340px] cursor-pointer overflow-hidden rounded-card bg-white transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -148,7 +148,7 @@ const BusinessSolution = () => {
                   <h3 className="mb-2 text-xl font-bold text-white">{industry.name}</h3>
                   <p className="mb-6 grow text-sm leading-relaxed text-white/82">{industry.description}</p>
 
-                  <div className="border-t border-white/20 pt-4">
+                  <div className="border-t border-white/10 pt-4">
                     <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-white/90">
                       Selected applications
                     </p>
@@ -173,7 +173,7 @@ const BusinessSolution = () => {
         <div className="mt-16 text-center">
           <div
             data-solution-cta-line
-            className="mx-auto mb-6 h-px w-24 bg-dark/15"
+            className="mx-auto mb-6 h-px w-24 bg-white/15"
           />
           <p data-solution-cta-text className="mb-6 text-dark/90">
             Butuh solusi yang lebih spesifik untuk proses, distribusi, atau kategori produk Anda?

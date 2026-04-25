@@ -85,7 +85,7 @@ export default function Stats() {
               
               <motion.div 
                 whileHover={{ rotate: [0, -10, 10, 0] }}
-                className="w-16 h-16 bg-[#1a3a36]/5 text-[#1a3a36] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#1a3a36] group-hover:text-white transition-all shadow-sm"
+                className="w-16 h-16 bg-[#1a3a36]/5 text-[#1a3a36] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#1a3a36] group-hover:text-neutral-900 transition-all shadow-sm"
               >
                 {feature.icon}
               </motion.div>

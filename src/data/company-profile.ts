@@ -6,7 +6,7 @@ export const companyProfileVideo: CompanyProfileVideo = {
     "Gambaran singkat tentang bagaimana MRS membangun kualitas, kepercayaan, dan jaringan distribusi untuk melayani kebutuhan industri secara berkelanjutan.",
   duration: "02:18",
   poster: "/hero_background.png",
-  videoUrl: "/hero-video-web.mp4",
+  videoUrl: "/plastic.mp4",
   highlights: [
     "Fasilitas produksi modern dengan kontrol kualitas berlapis",
     "Jaringan distribusi yang siap melayani kebutuhan nasional",

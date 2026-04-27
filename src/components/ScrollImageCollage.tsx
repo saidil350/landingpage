@@ -241,7 +241,6 @@ export default function ScrollImageCollage() {
   const heroLayerRefs = useRef<Array<HTMLDivElement | null>>([]);
   const supportCardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const heroTextRef = useRef<HTMLDivElement>(null);
-  const wordSliderRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -551,31 +550,6 @@ export default function ScrollImageCollage() {
       };
     }, section);
 
-    // Word Slider Animation
-    if (wordSliderRef.current) {
-      const words = wordSliderRef.current.children;
-      const totalItems = words.length;
-
-      const wordTl = gsap.timeline({ repeat: -1 });
-
-      for (let i = 0; i < totalItems - 1; i++) {
-        wordTl.to(wordSliderRef.current, {
-          yPercent: -(i + 1) * (100 / totalItems),
-          duration: 0.8,
-          ease: "power3.inOut",
-          delay: 2,
-        });
-      }
-
-      // Instant reset for seamless loop
-      wordTl.set(wordSliderRef.current, { yPercent: 0 });
-      
-      // Cleanup for this specific timeline
-      ctx.add(() => {
-        wordTl.kill();
-      });
-    }
-
     return () => {
       mm.revert();
       ctx.revert();
@@ -662,46 +636,47 @@ export default function ScrollImageCollage() {
           {/* Cinematic Hero Text Overlay */}
           <div
             ref={heroTextRef}
-            className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center pt-20"
+            className="absolute inset-0 z-50 flex items-center justify-center pt-20"
           >
-            <div className="container-custom px-4 text-center">
-              <div
-                className="mx-auto mb-10 flex flex-col items-center text-white drop-shadow-lg tracking-tight"
-                style={{ textShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
-              >
-                <span className="text-5xl md:text-7xl lg:text-8xl font-bold mb-3 tracking-wide">MRS</span>
-                <span className="text-3xl md:text-5xl lg:text-6xl font-medium mb-6 text-white/95">Solusi Kemasan Plastik</span>
-                
-                <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-3 text-3xl md:text-5xl lg:text-6xl mb-6 font-light">
-                  <span>yang</span>
-                  <div className="relative h-[1.3em] overflow-hidden min-w-[200px] md:min-w-[340px] rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md shadow-inner">
-                    <div ref={wordSliderRef} className="absolute top-0 left-0 w-full flex flex-col">
-                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Amanah</span>
-                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Andal</span>
-                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Siap Bertumbuh</span>
-                      {/* Clone for loop */}
-                      <span className="h-[1.3em] px-6 flex items-center justify-center text-white font-semibold whitespace-nowrap">Amanah</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <span className="text-2xl md:text-4xl lg:text-5xl font-light mt-2 text-white/90">Bersama Industri</span>
-              </div>
+            <div className="mx-auto w-full max-w-[1440px] px-4 text-center sm:px-6 lg:px-8">
+              <h1 className="mx-auto mb-8 flex flex-col items-center font-heading text-white">
+                <span className="hidden whitespace-nowrap text-[86px] font-light leading-[0.94] tracking-normal md:block lg:text-[108px] xl:text-[124px]">
+                  MRS Solusi Kemasan
+                </span>
+                <span className="block text-[44px] font-light leading-[0.98] tracking-normal sm:text-[58px] md:hidden">
+                  MRS Solusi
+                  <br />
+                  Kemasan
+                </span>
+                <span className="mt-2 hidden items-center justify-center gap-x-5 whitespace-nowrap text-[48px] font-light leading-[0.96] tracking-normal md:flex lg:text-[72px] xl:text-[84px]">
+                  <span>yang Amanah</span>
+                  <span>Bersama Industri</span>
+                </span>
+                <span className="mt-3 flex flex-col items-center text-[34px] font-light leading-[1.04] tracking-normal sm:text-[46px] md:hidden">
+                  <span className="flex items-center justify-center gap-3 whitespace-nowrap">
+                    yang Amanah
+                  </span>
+                  <span className="whitespace-nowrap">Bersama Industri</span>
+                </span>
+              </h1>
 
               <div
                 ref={buttonsRef}
                 className="pointer-events-auto flex flex-wrap justify-center gap-4"
               >
-                <a href="#keahlian" className="btn-primary text-lg">
+                <a
+                  href="#keahlian"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[22px] bg-white px-7 py-3 text-base font-medium text-dark transition-all duration-300 hover:bg-primary hover:text-white active:scale-95"
+                >
                   Jelajahi Kapabilitas
                   <ArrowRight size={20} />
                 </a>
                 <a
                   href="#company-profile"
-                  className="btn-primary text-lg"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[22px] border border-white/80 bg-white/5 px-7 py-3 text-base font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-dark active:scale-95"
                 >
                   <PlayCircle size={20} />
-                  Profile Perusahaan
+                  Profil Perusahaan
                 </a>
               </div>
             </div>
